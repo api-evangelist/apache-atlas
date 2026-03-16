@@ -1,0 +1,35 @@
+aid: apache-atlas
+name: Apache Atlas
+description: >-
+  Apache Atlas is a scalable and extensible set of core foundational governance services that enables enterprises to effectively meet their compliance requirements within Hadoop and allows integration with the whole enterprise data ecosystem. It provides metadata management, data classification, and lineage tracking.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Governance
+  - Metadata
+  - Data Lineage
+  - Compliance
+  - Big Data
+created: '2026-03-16'
+modified: '2026-03-16'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/apache-atlas/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - aid: apache-atlas:apache-atlas-rest-api
+    name: Apache Atlas REST API
+    description: >-
+      The Atlas REST API provides endpoints for managing types, entities, lineage, discovery, and glossary resources, enabling programmatic metadata management and data governance operations.
+    humanURL: https://atlas.apache.org/api/v2/index.html
+    tags:
+      - REST
+      - Metadata
+      - Governance
+    properties:
+      - type: Documentation
+        url: https://atlas.apache.org/api/v2/index.html
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
