@@ -7,11 +7,11 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
+  - Big Data
+  - Compliance
+  - Data Lineage
   - Governance
   - Metadata
-  - Data Lineage
-  - Compliance
-  - Big Data
 created: '2026-03-16'
 modified: '2026-03-16'
 url: >-
@@ -24,9 +24,9 @@ apis:
       The Atlas REST API provides endpoints for managing types, entities, lineage, discovery, and glossary resources, enabling programmatic metadata management and data governance operations.
     humanURL: https://atlas.apache.org/api/v2/index.html
     tags:
-      - REST
-      - Metadata
       - Governance
+      - Metadata
+      - REST
     properties:
       - type: Documentation
         url: https://atlas.apache.org/api/v2/index.html
