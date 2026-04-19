@@ -1,0 +1,197 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Apache Atlas REST API
+  description: Shared per-API capability for Apache Atlas metadata management, 
+    entity CRUD, type definitions, discovery, lineage, and glossary.
+  tags:
+  - Apache Atlas
+  - Data Governance
+  - Metadata Management
+  - Data Lineage
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    ATLAS_USERNAME: ATLAS_USERNAME
+    ATLAS_PASSWORD: ATLAS_PASSWORD
+capability:
+  consumes:
+  - type: http
+    namespace: atlas-rest
+    baseUri: http://localhost:21000/api/atlas
+    description: Apache Atlas REST API.
+    authentication:
+      type: basic
+      username: '{{ATLAS_USERNAME}}'
+      password: '{{ATLAS_PASSWORD}}'
+    resources:
+    - name: entities
+      path: /v2/entity
+      description: Manage metadata entities.
+      operations:
+      - name: get-entity
+        method: GET
+        description: Get entity by GUID.
+        inputParameters:
+        - name: guid
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-entities
+        method: POST
+        description: Create or update entities in bulk.
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-entity
+        method: DELETE
+        description: Delete entity by GUID.
+        inputParameters:
+        - name: guid
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search
+      path: /v2/search
+      description: Search and discover metadata.
+      operations:
+      - name: basic-search
+        method: GET
+        description: Search entities by type and attributes.
+        inputParameters:
+        - name: typeName
+          in: query
+          type: string
+          required: false
+        - name: query
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: fulltext-search
+        method: GET
+        description: Full-text search across all entities.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: lineage
+      path: /v2/lineage
+      description: Retrieve entity lineage.
+      operations:
+      - name: get-lineage
+        method: GET
+        description: Get lineage for an entity.
+        inputParameters:
+        - name: guid
+          in: path
+          type: string
+          required: true
+        - name: direction
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: glossary
+      path: /v2/glossary
+      description: Manage business glossary.
+      operations:
+      - name: list-glossaries
+        method: GET
+        description: List all glossaries.
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-glossary
+        method: POST
+        description: Create a glossary.
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: mcp
+    port: 9100
+    namespace: atlas-mcp
+    transport: http
+    tools:
+    - name: get-entity
+      description: Get an Atlas metadata entity by GUID.
+      hints:
+        readOnly: true
+      call: atlas-rest.get-entity
+      with:
+        guid: tools.guid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-entities
+      description: Search Atlas entities by type and attributes.
+      hints:
+        readOnly: true
+      call: atlas-rest.basic-search
+      with:
+        typeName: tools.typeName
+        query: tools.query
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-lineage
+      description: Get data lineage for an Atlas entity.
+      hints:
+        readOnly: true
+      call: atlas-rest.get-lineage
+      with:
+        guid: tools.guid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-entities
+      description: Create or update metadata entities in Atlas.
+      hints:
+        readOnly: false
+      call: atlas-rest.create-entities
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-glossaries
+      description: List business glossaries in Atlas.
+      hints:
+        readOnly: true
+      call: atlas-rest.list-glossaries
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-atlas/refs/heads/main/json-structure/atlas-atlas-glossary-structure.json",
+  "name": "AtlasGlossary",
+  "description": "A business glossary containing terms and categories for data governance.",
+  "type": "object",
+  "properties": {
+    "guid": {
+      "type": "string",
+      "description": "Unique identifier of the glossary.",
+      "example": "glossary-guid-001"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the glossary.",
+      "example": "BusinessGlossary"
+    },
+    "shortDescription": {
+      "type": "string",
+      "description": "Short description of the glossary.",
+      "example": "Enterprise business glossary for data governance"
+    },
+    "longDescription": {
+      "type": "string",
+      "description": "Long description of the glossary."
+    },
+    "language": {
+      "type": "string",
+      "description": "Language of the glossary.",
+      "example": "en"
+    },
+    "termCount": {
+      "type": "integer",
+      "description": "Number of terms in this glossary.",
+      "example": 42
+    }
+  }
+}

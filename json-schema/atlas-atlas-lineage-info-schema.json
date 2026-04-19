@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-atlas/refs/heads/main/json-schema/atlas-atlas-lineage-info-schema.json",
+  "title": "AtlasLineageInfo",
+  "description": "Lineage graph information for an entity showing upstream and downstream data flow.",
+  "type": "object",
+  "properties": {
+    "baseEntityGuid": {
+      "type": "string",
+      "description": "GUID of the entity whose lineage is being retrieved.",
+      "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    },
+    "lineageDirection": {
+      "type": "string",
+      "description": "Direction of lineage traversal.",
+      "enum": [
+        "INPUT",
+        "OUTPUT",
+        "BOTH"
+      ],
+      "example": "BOTH"
+    },
+    "lineageDepth": {
+      "type": "integer",
+      "description": "Number of hops traversed in the lineage graph.",
+      "example": 3
+    },
+    "guidEntityMap": {
+      "type": "object",
+      "description": "Map of GUID to entity header for all entities in the lineage graph."
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "List of lineage relationships between entities."
+    }
+  }
+}

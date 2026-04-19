@@ -1,0 +1,18 @@
+{
+  "typeName": "DataSet",
+  "guid": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "status": "ACTIVE",
+  "attributes": {
+    "name": "customer_data",
+    "qualifiedName": "customer_data@prod"
+  },
+  "labels": [
+    "PII",
+    "Finance"
+  ],
+  "classifications": [
+    {
+      "key": "value"
+    }
+  ]
+}

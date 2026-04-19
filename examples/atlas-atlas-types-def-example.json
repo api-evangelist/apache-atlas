@@ -1,0 +1,27 @@
+{
+  "entityDefs": [
+    {
+      "key": "value"
+    }
+  ],
+  "classificationDefs": [
+    {
+      "key": "value"
+    }
+  ],
+  "enumDefs": [
+    {
+      "key": "value"
+    }
+  ],
+  "relationshipDefs": [
+    {
+      "key": "value"
+    }
+  ],
+  "businessMetadataDefs": [
+    {
+      "key": "value"
+    }
+  ]
+}

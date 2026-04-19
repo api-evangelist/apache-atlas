@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-atlas/refs/heads/main/json-structure/atlas-entity-with-ext-info-structure.json",
+  "name": "EntityWithExtInfo",
+  "description": "An entity with its extended information (referred entities, classifications).",
+  "type": "object",
+  "properties": {
+    "entity": {
+      "$ref": "#/components/schemas/AtlasEntity"
+    },
+    "referredEntities": {
+      "type": "object",
+      "description": "Map of GUID to related entity for entities referenced by this entity."
+    }
+  }
+}

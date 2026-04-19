@@ -1,0 +1,5 @@
+{
+  "requestId": "req-123456",
+  "errorCode": "ATLAS-400-00-004",
+  "errorMessage": "Entity not found for GUID"
+}

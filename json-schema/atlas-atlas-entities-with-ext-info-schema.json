@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-atlas/refs/heads/main/json-schema/atlas-atlas-entities-with-ext-info-schema.json",
+  "title": "AtlasEntitiesWithExtInfo",
+  "description": "Multiple entities with extended information for bulk operations.",
+  "type": "object",
+  "properties": {
+    "entities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/AtlasEntity"
+      },
+      "description": "List of entities to create or update."
+    },
+    "referredEntities": {
+      "type": "object",
+      "description": "Map of referenced entities."
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "guid": "glossary-guid-001",
+  "name": "BusinessGlossary",
+  "shortDescription": "Enterprise business glossary for data governance",
+  "longDescription": "Apache Atlas metadata entity example.",
+  "language": "en",
+  "termCount": 42
+}

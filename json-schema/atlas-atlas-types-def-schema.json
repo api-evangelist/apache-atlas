@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-atlas/refs/heads/main/json-schema/atlas-atlas-types-def-schema.json",
+  "title": "AtlasTypesDef",
+  "description": "Collection of all type definitions in Apache Atlas.",
+  "type": "object",
+  "properties": {
+    "entityDefs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Entity type definitions."
+    },
+    "classificationDefs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Classification type definitions."
+    },
+    "enumDefs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Enumeration type definitions."
+    },
+    "relationshipDefs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Relationship type definitions."
+    },
+    "businessMetadataDefs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Business metadata type definitions."
+    }
+  }
+}

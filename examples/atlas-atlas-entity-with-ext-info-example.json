@@ -1,0 +1,6 @@
+{
+  "entity": "example-value",
+  "referredEntities": {
+    "key": "value"
+  }
+}

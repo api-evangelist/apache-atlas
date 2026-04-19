@@ -1,0 +1,11 @@
+{
+  "guid": "rel-guid-001",
+  "typeName": "DataSetLineage",
+  "status": "ACTIVE",
+  "end1": {
+    "key": "value"
+  },
+  "end2": {
+    "key": "value"
+  }
+}

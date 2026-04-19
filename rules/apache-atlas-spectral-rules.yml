@@ -1,0 +1,82 @@
+extends: spectral:oas
+rules:
+  info-title-prefix:
+    description: API title must start with "Apache Atlas"
+    severity: warn
+    given: "$.info.title"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Apache Atlas"
+  info-description-required:
+    severity: error
+    given: "$.info"
+    then:
+      field: description
+      function: truthy
+  servers-defined:
+    severity: error
+    given: "$"
+    then:
+      field: servers
+      function: truthy
+  operation-summary-required:
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+  operation-summary-starts-with-apache-atlas:
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Apache Atlas"
+  operation-operationId-required:
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+  operation-tags-required:
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+  parameter-description-required:
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].parameters[*]"
+    then:
+      field: description
+      function: truthy
+  response-success-required:
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ['200']
+            - required: ['201']
+            - required: ['204']
+  response-description-required:
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete].responses[*]"
+    then:
+      field: description
+      function: truthy
+  security-schemes-defined:
+    severity: warn
+    given: "$.components"
+    then:
+      field: securitySchemes
+      function: truthy
+  get-no-request-body:
+    severity: error
+    given: "$.paths[*].get"
+    then:
+      field: requestBody
+      function: falsy

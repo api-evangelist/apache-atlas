@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-atlas/refs/heads/main/json-structure/atlas-atlas-relationship-structure.json",
+  "name": "AtlasRelationship",
+  "description": "A relationship between two Atlas entities.",
+  "type": "object",
+  "properties": {
+    "guid": {
+      "type": "string",
+      "description": "GUID of the relationship.",
+      "example": "rel-guid-001"
+    },
+    "typeName": {
+      "type": "string",
+      "description": "Type name of the relationship.",
+      "example": "DataSetLineage"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the relationship.",
+      "enum": [
+        "ACTIVE",
+        "DELETED"
+      ],
+      "example": "ACTIVE"
+    },
+    "end1": {
+      "type": "object",
+      "description": "First endpoint of the relationship.",
+      "properties": {
+        "guid": {
+          "type": "string",
+          "example": "source-entity-guid"
+        },
+        "typeName": {
+          "type": "string",
+          "example": "DataSet"
+        }
+      }
+    },
+    "end2": {
+      "type": "object",
+      "description": "Second endpoint of the relationship.",
+      "properties": {
+        "guid": {
+          "type": "string",
+          "example": "target-entity-guid"
+        },
+        "typeName": {
+          "type": "string",
+          "example": "DataSet"
+        }
+      }
+    }
+  }
+}

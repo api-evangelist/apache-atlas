@@ -1,0 +1,12 @@
+{
+  "queryType": "BASIC",
+  "searchParameters": {
+    "key": "value"
+  },
+  "entities": [
+    {
+      "key": "value"
+    }
+  ],
+  "approximateCount": 42
+}

@@ -1,0 +1,155 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "atlas": "https://atlas.apache.org/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "AtlasLineageInfo": "atlas:AtlasLineageInfo",
+    "baseEntityGuid": {
+      "@id": "atlas:baseEntityGuid",
+      "@type": "xsd:string"
+    },
+    "lineageDirection": {
+      "@id": "atlas:lineageDirection",
+      "@type": "xsd:string"
+    },
+    "lineageDepth": {
+      "@id": "atlas:lineageDepth",
+      "@type": "xsd:integer"
+    },
+    "guidEntityMap": {
+      "@id": "atlas:guidEntityMap",
+      "@type": "xsd:string"
+    },
+    "relations": {
+      "@id": "atlas:relations",
+      "@type": "xsd:string"
+    },
+    "AtlasEntityWithExtInfo": "atlas:AtlasEntityWithExtInfo",
+    "entity": {
+      "@id": "atlas:entity",
+      "@type": "xsd:string"
+    },
+    "referredEntities": {
+      "@id": "atlas:referredEntities",
+      "@type": "xsd:string"
+    },
+    "AtlasEntitiesWithExtInfo": "atlas:AtlasEntitiesWithExtInfo",
+    "entities": {
+      "@id": "atlas:entities",
+      "@type": "xsd:string"
+    },
+    "AtlasRelationship": "atlas:AtlasRelationship",
+    "guid": {
+      "@id": "atlas:guid",
+      "@type": "xsd:string"
+    },
+    "typeName": {
+      "@id": "atlas:typeName",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "atlas:status",
+      "@type": "xsd:string"
+    },
+    "end1": {
+      "@id": "atlas:end1",
+      "@type": "xsd:string"
+    },
+    "end2": {
+      "@id": "atlas:end2",
+      "@type": "xsd:string"
+    },
+    "AtlasSearchResult": "atlas:AtlasSearchResult",
+    "queryType": {
+      "@id": "atlas:queryType",
+      "@type": "xsd:string"
+    },
+    "searchParameters": {
+      "@id": "atlas:searchParameters",
+      "@type": "xsd:string"
+    },
+    "approximateCount": {
+      "@id": "atlas:approximateCount",
+      "@type": "xsd:integer"
+    },
+    "AtlasGlossary": "atlas:AtlasGlossary",
+    "name": {
+      "@id": "atlas:name",
+      "@type": "xsd:string"
+    },
+    "shortDescription": {
+      "@id": "atlas:shortDescription",
+      "@type": "xsd:string"
+    },
+    "longDescription": {
+      "@id": "atlas:longDescription",
+      "@type": "xsd:string"
+    },
+    "language": {
+      "@id": "atlas:language",
+      "@type": "xsd:string"
+    },
+    "termCount": {
+      "@id": "atlas:termCount",
+      "@type": "xsd:integer"
+    },
+    "AtlasTypesDef": "atlas:AtlasTypesDef",
+    "entityDefs": {
+      "@id": "atlas:entityDefs",
+      "@type": "xsd:string"
+    },
+    "classificationDefs": {
+      "@id": "atlas:classificationDefs",
+      "@type": "xsd:string"
+    },
+    "enumDefs": {
+      "@id": "atlas:enumDefs",
+      "@type": "xsd:string"
+    },
+    "relationshipDefs": {
+      "@id": "atlas:relationshipDefs",
+      "@type": "xsd:string"
+    },
+    "businessMetadataDefs": {
+      "@id": "atlas:businessMetadataDefs",
+      "@type": "xsd:string"
+    },
+    "AtlasErrorResponse": "atlas:AtlasErrorResponse",
+    "requestId": {
+      "@id": "atlas:requestId",
+      "@type": "xsd:string"
+    },
+    "errorCode": {
+      "@id": "atlas:errorCode",
+      "@type": "xsd:string"
+    },
+    "errorMessage": {
+      "@id": "atlas:errorMessage",
+      "@type": "xsd:string"
+    },
+    "EntityMutationResponse": "atlas:EntityMutationResponse",
+    "guidAssignments": {
+      "@id": "atlas:guidAssignments",
+      "@type": "xsd:string"
+    },
+    "mutatedEntities": {
+      "@id": "atlas:mutatedEntities",
+      "@type": "xsd:string"
+    },
+    "EntityWithExtInfo": "atlas:EntityWithExtInfo",
+    "AtlasEntity": "atlas:AtlasEntity",
+    "attributes": {
+      "@id": "atlas:attributes",
+      "@type": "xsd:string"
+    },
+    "labels": {
+      "@id": "atlas:labels",
+      "@type": "xsd:string"
+    },
+    "classifications": {
+      "@id": "atlas:classifications",
+      "@type": "xsd:string"
+    }
+  }
+}

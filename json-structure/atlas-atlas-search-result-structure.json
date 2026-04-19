@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-atlas/refs/heads/main/json-structure/atlas-atlas-search-result-structure.json",
+  "name": "AtlasSearchResult",
+  "description": "Result of a search query against the Atlas metadata repository.",
+  "type": "object",
+  "properties": {
+    "queryType": {
+      "type": "string",
+      "description": "Type of search query executed.",
+      "example": "BASIC"
+    },
+    "searchParameters": {
+      "type": "object",
+      "description": "The search parameters that were used."
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "List of matching entity headers."
+    },
+    "approximateCount": {
+      "type": "integer",
+      "description": "Approximate total count of matching entities.",
+      "example": 42
+    }
+  }
+}

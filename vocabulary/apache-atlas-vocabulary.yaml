@@ -1,0 +1,200 @@
+vocabulary: 1.0.0
+info:
+  provider: Apache Atlas
+  description: Unified taxonomy for Apache Atlas covering metadata management, 
+    data governance, lineage, classification, and glossary operations.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+operational:
+  apis:
+  - name: Apache Atlas REST API
+    namespace: atlas-rest
+    version: 2.3.0
+    baseUrl: http://localhost:21000/api/atlas
+    status: active
+  resources:
+  - name: entities
+    api: atlas-rest
+    actions:
+    - get
+    - create
+    - update
+    - delete
+    - bulk-create
+  - name: types
+    api: atlas-rest
+    actions:
+    - get
+    - create
+    - update
+    - delete
+  - name: search
+    api: atlas-rest
+    actions:
+    - basic
+    - fulltext
+    - dsl
+    - quick
+  - name: lineage
+    api: atlas-rest
+    actions:
+    - get
+  - name: glossary
+    api: atlas-rest
+    actions:
+    - list
+    - create
+    - update
+    - delete
+  - name: terms
+    api: atlas-rest
+    actions:
+    - list
+    - get
+    - create
+    - update
+    - delete
+  - name: classifications
+    api: atlas-rest
+    actions:
+    - get
+    - create
+    - update
+    - delete
+  - name: relationships
+    api: atlas-rest
+    actions:
+    - create
+    - get
+    - update
+    - delete
+  actions:
+  - name: get
+    httpMethod: GET
+    pattern: read
+  - name: create
+    httpMethod: POST
+    pattern: write
+  - name: update
+    httpMethod: PUT
+    pattern: write
+  - name: delete
+    httpMethod: DELETE
+    pattern: destructive
+  - name: search
+    httpMethod: GET
+    pattern: query
+  schemas:
+    core:
+    - AtlasEntity
+    - EntityWithExtInfo
+    - EntityMutationResponse
+    types:
+    - AtlasTypesDef
+    governance:
+    - AtlasGlossary
+    - AtlasLineageInfo
+    - AtlasRelationship
+    search:
+    - AtlasSearchResult
+  parameters:
+    identifiers:
+    - guid
+    - typeName
+    - qualifiedName
+    pagination:
+    - limit
+    - offset
+    filters:
+    - classification
+    - query
+    - direction
+    - depth
+  enums:
+    entityStatus:
+    - ACTIVE
+    - DELETED
+    lineageDirection:
+    - INPUT
+    - OUTPUT
+    - BOTH
+    typeCategories:
+    - CLASSIFICATION
+    - ENTITY
+    - ENUM
+    - RELATIONSHIP
+    - STRUCT
+    - BUSINESS_METADATA
+  authentication:
+    schemes:
+    - name: basicAuth
+      type: http
+      scheme: basic
+capability:
+  workflows:
+  - name: Apache Atlas Data Governance
+    file: capabilities/atlas-data-governance.yaml
+    description: Metadata discovery, lineage tracking, and governance workflow.
+    apis:
+    - atlas-rest
+    toolCount: 6
+    personas:
+    - Data Governance Team
+    - Data Engineer
+  personas:
+  - id: data-governance
+    name: Data Governance Team
+    description: Teams responsible for data quality, compliance, and metadata 
+      policies.
+    workflows:
+    - atlas-data-governance
+  - id: data-engineer
+    name: Data Engineer
+    description: Engineers tracking data lineage and managing metadata for 
+      pipelines.
+    workflows:
+    - atlas-data-governance
+  domains:
+  - Data Governance
+  - Metadata Management
+  - Data Lineage
+  - Compliance
+  namespaces:
+  - name: atlas-rest
+    type: consumed
+  - name: atlas-governance-api
+    type: rest
+    port: 8080
+  - name: atlas-governance-mcp
+    type: mcp
+    port: 9090
+  binds:
+  - ATLAS_USERNAME
+  - ATLAS_PASSWORD
+crossReference:
+- resource: entities
+  operations:
+  - get
+  - create
+  - search
+  workflows:
+  - atlas-data-governance
+  personas:
+  - Data Governance Team
+  - Data Engineer
+- resource: lineage
+  operations:
+  - get
+  workflows:
+  - atlas-data-governance
+  personas:
+  - Data Engineer
+  - Data Governance Team
+- resource: glossary
+  operations:
+  - list
+  - create
+  workflows:
+  - atlas-data-governance
+  personas:
+  - Data Governance Team

@@ -1,0 +1,127 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Apache Atlas Data Governance
+  description: Unified capability for Apache Atlas data governance workflows 
+    including metadata discovery, lineage tracking, entity management, and 
+    glossary management. Used by data governance teams and data engineers.
+  tags:
+  - Apache Atlas
+  - Data Governance
+  - Metadata Management
+  - Data Lineage
+  - Compliance
+  created: '2026-04-19'
+  modified: '2026-04-19'
+binds:
+- namespace: env
+  keys:
+    ATLAS_USERNAME: ATLAS_USERNAME
+    ATLAS_PASSWORD: ATLAS_PASSWORD
+capability:
+  consumes:
+  - import: atlas-rest
+    location: ./shared/atlas-rest.yaml
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: atlas-governance-api
+    description: Unified REST API for Atlas data governance.
+    resources:
+    - path: /v1/entities/{guid}
+      name: entities
+      operations:
+      - method: GET
+        name: get-entity
+        description: Get entity.
+        call: atlas-rest.get-entity
+        with:
+          guid: rest.guid
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/search
+      name: search
+      operations:
+      - method: GET
+        name: search-entities
+        description: Search entities.
+        call: atlas-rest.basic-search
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/lineage/{guid}
+      name: lineage
+      operations:
+      - method: GET
+        name: get-lineage
+        description: Get entity lineage.
+        call: atlas-rest.get-lineage
+        with:
+          guid: rest.guid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: atlas-governance-mcp
+    transport: http
+    description: MCP server for AI-assisted data governance with Apache Atlas.
+    tools:
+    - name: get-entity
+      description: Get an Atlas entity by GUID.
+      hints:
+        readOnly: true
+      call: atlas-rest.get-entity
+      with:
+        guid: tools.guid
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-entities
+      description: Search Atlas metadata entities by type and attributes.
+      hints:
+        readOnly: true
+      call: atlas-rest.basic-search
+      with:
+        typeName: tools.typeName
+        query: tools.query
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fulltext-search
+      description: Full-text search across all Atlas metadata.
+      hints:
+        readOnly: true
+      call: atlas-rest.fulltext-search
+      with:
+        query: tools.query
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-lineage
+      description: Get data lineage graph for an Atlas entity.
+      hints:
+        readOnly: true
+      call: atlas-rest.get-lineage
+      with:
+        guid: tools.guid
+        direction: tools.direction
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-entities
+      description: Create metadata entities in Atlas for data governance.
+      hints:
+        readOnly: false
+      call: atlas-rest.create-entities
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-glossaries
+      description: List business glossaries for data governance.
+      hints:
+        readOnly: true
+      call: atlas-rest.list-glossaries
+      outputParameters:
+      - type: object
+        mapping: $.

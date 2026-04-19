@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-atlas/refs/heads/main/json-schema/atlas-atlas-entity-with-ext-info-schema.json",
+  "title": "AtlasEntityWithExtInfo",
+  "description": "Entity with extended information for create/update operations.",
+  "type": "object",
+  "properties": {
+    "entity": {
+      "$ref": "#/components/schemas/AtlasEntity"
+    },
+    "referredEntities": {
+      "type": "object",
+      "description": "Map of referenced entities."
+    }
+  }
+}

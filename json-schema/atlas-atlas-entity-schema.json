@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-atlas/refs/heads/main/json-schema/atlas-atlas-entity-schema.json",
+  "title": "AtlasEntity",
+  "description": "Represents a single metadata entity in Apache Atlas.",
+  "type": "object",
+  "properties": {
+    "typeName": {
+      "type": "string",
+      "description": "The type name of the entity.",
+      "example": "DataSet"
+    },
+    "guid": {
+      "type": "string",
+      "description": "Globally unique identifier for the entity.",
+      "example": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    },
+    "status": {
+      "type": "string",
+      "description": "Entity status (ACTIVE or DELETED).",
+      "enum": [
+        "ACTIVE",
+        "DELETED"
+      ],
+      "example": "ACTIVE"
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Map of attribute name to attribute value.",
+      "example": {
+        "name": "customer_data",
+        "qualifiedName": "customer_data@prod"
+      }
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Set of labels/tags applied to the entity.",
+      "example": [
+        "PII",
+        "Finance"
+      ]
+    },
+    "classifications": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Classifications applied to the entity."
+    }
+  }
+}
