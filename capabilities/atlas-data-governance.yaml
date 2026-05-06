@@ -1,9 +1,8 @@
-naftiko: 1.0.0-alpha1
+naftiko: 1.0.0-alpha2
 info:
   label: Apache Atlas Data Governance
-  description: Unified capability for Apache Atlas data governance workflows 
-    including metadata discovery, lineage tracking, entity management, and 
-    glossary management. Used by data governance teams and data engineers.
+  description: Unified capability for Apache Atlas data governance workflows including metadata discovery, lineage tracking,
+    entity management, and glossary management. Used by data governance teams and data engineers.
   tags:
   - Apache Atlas
   - Data Governance
@@ -11,7 +10,7 @@ info:
   - Data Lineage
   - Compliance
   created: '2026-04-19'
-  modified: '2026-04-19'
+  modified: '2026-05-06'
 binds:
 - namespace: env
   keys:
@@ -19,8 +18,131 @@ binds:
     ATLAS_PASSWORD: ATLAS_PASSWORD
 capability:
   consumes:
-  - import: atlas-rest
-    location: ./shared/atlas-rest.yaml
+  - type: http
+    namespace: atlas-rest
+    baseUri: http://localhost:21000/api/atlas
+    description: Apache Atlas REST API.
+    authentication:
+      type: basic
+      username: '{{ATLAS_USERNAME}}'
+      password: '{{ATLAS_PASSWORD}}'
+    resources:
+    - name: entities
+      path: /v2/entity
+      description: Manage metadata entities.
+      operations:
+      - name: get-entity
+        method: GET
+        description: Get entity by GUID.
+        inputParameters:
+        - name: guid
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-entities
+        method: POST
+        description: Create or update entities in bulk.
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-entity
+        method: DELETE
+        description: Delete entity by GUID.
+        inputParameters:
+        - name: guid
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: search
+      path: /v2/search
+      description: Search and discover metadata.
+      operations:
+      - name: basic-search
+        method: GET
+        description: Search entities by type and attributes.
+        inputParameters:
+        - name: typeName
+          in: query
+          type: string
+          required: false
+        - name: query
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: fulltext-search
+        method: GET
+        description: Full-text search across all entities.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: lineage
+      path: /v2/lineage
+      description: Retrieve entity lineage.
+      operations:
+      - name: get-lineage
+        method: GET
+        description: Get lineage for an entity.
+        inputParameters:
+        - name: guid
+          in: path
+          type: string
+          required: true
+        - name: direction
+          in: query
+          type: string
+          required: false
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: glossary
+      path: /v2/glossary
+      description: Manage business glossary.
+      operations:
+      - name: list-glossaries
+        method: GET
+        description: List all glossaries.
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-glossary
+        method: POST
+        description: Create a glossary.
+        inputParameters: []
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
   - type: rest
     port: 8080
