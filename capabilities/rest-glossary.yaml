@@ -1,0 +1,121 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Atlas REST API — Glossary
+  description: 'Apache Atlas REST API — Glossary. 2 operations. Lead operation: Apache Atlas List Glossaries. Self-contained
+    Naftiko capability covering one Apache Atlas business surface.'
+  tags:
+  - Apache Atlas
+  - Glossary
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_ATLAS_API_KEY: APACHE_ATLAS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-glossary
+    baseUri: http://localhost:21000/api/atlas
+    description: Apache Atlas REST API — Glossary business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-glossary
+      path: /v2/glossary
+      operations:
+      - name: listglossaries
+        method: GET
+        description: Apache Atlas List Glossaries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of glossaries to return.
+        - name: offset
+          in: query
+          type: integer
+          description: Number of glossaries to skip.
+      - name: createglossary
+        method: POST
+        description: Apache Atlas Create Glossary
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.APACHE_ATLAS_USER}}'
+      password: '{{env.APACHE_ATLAS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: rest-glossary-rest
+    port: 8080
+    description: REST adapter for Apache Atlas REST API — Glossary. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/glossary
+      name: v2-glossary
+      description: REST surface for v2-glossary.
+      operations:
+      - method: GET
+        name: listglossaries
+        description: Apache Atlas List Glossaries
+        call: rest-glossary.listglossaries
+        with:
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createglossary
+        description: Apache Atlas Create Glossary
+        call: rest-glossary.createglossary
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-glossary-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Atlas REST API — Glossary. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: apache-atlas-list-glossaries
+      description: Apache Atlas List Glossaries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-glossary.listglossaries
+      with:
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-atlas-create-glossary
+      description: Apache Atlas Create Glossary
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-glossary.createglossary
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

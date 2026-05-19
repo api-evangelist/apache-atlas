@@ -1,0 +1,93 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Atlas REST API — Lineage
+  description: 'Apache Atlas REST API — Lineage. 1 operations. Lead operation: Apache Atlas Get Lineage by GUID. Self-contained
+    Naftiko capability covering one Apache Atlas business surface.'
+  tags:
+  - Apache Atlas
+  - Lineage
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_ATLAS_API_KEY: APACHE_ATLAS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-lineage
+    baseUri: http://localhost:21000/api/atlas
+    description: Apache Atlas REST API — Lineage business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-lineage-guid
+      path: /v2/lineage/{guid}
+      operations:
+      - name: getlineagebyguid
+        method: GET
+        description: Apache Atlas Get Lineage by GUID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: guid
+          in: path
+          type: string
+          description: Unique identifier (GUID) of the entity.
+          required: true
+        - name: direction
+          in: query
+          type: string
+          description: Lineage direction (INPUT, OUTPUT, BOTH).
+        - name: depth
+          in: query
+          type: integer
+          description: Number of hops to traverse in the lineage graph.
+    authentication:
+      type: basic
+      username: '{{env.APACHE_ATLAS_USER}}'
+      password: '{{env.APACHE_ATLAS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: rest-lineage-rest
+    port: 8080
+    description: REST adapter for Apache Atlas REST API — Lineage. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v2/lineage/{guid}
+      name: v2-lineage-guid
+      description: REST surface for v2-lineage-guid.
+      operations:
+      - method: GET
+        name: getlineagebyguid
+        description: Apache Atlas Get Lineage by GUID
+        call: rest-lineage.getlineagebyguid
+        with:
+          guid: rest.guid
+          direction: rest.direction
+          depth: rest.depth
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-lineage-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Atlas REST API — Lineage. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: apache-atlas-get-lineage-guid
+      description: Apache Atlas Get Lineage by GUID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-lineage.getlineagebyguid
+      with:
+        guid: tools.guid
+        direction: tools.direction
+        depth: tools.depth
+      outputParameters:
+      - type: object
+        mapping: $.
