@@ -41,17 +41,17 @@ apis:
     url: openapi/apache-atlas-rest-openapi.yaml
   - type: GettingStarted
     url: https://atlas.apache.org/quick_start_v2.html
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/rest-discovery.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/rest-entities.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/rest-glossary.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/rest-lineage.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/rest-relationships.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/rest-types.yaml
 common:
 - type: GitHubOrganization
