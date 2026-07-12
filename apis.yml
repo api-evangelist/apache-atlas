@@ -54,6 +54,12 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/rest-types.yaml
 common:
+- type: VulnerabilityDisclosure
+  url: security/apache-atlas-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/apache-atlas-domain-security.yml
+- type: Authentication
+  url: authentication/apache-atlas-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/apache
 - type: GitHubRepository
