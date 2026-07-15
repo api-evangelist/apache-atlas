@@ -54,6 +54,8 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/rest-types.yaml
 common:
+- type: AgenticAccess
+  url: agentic-access/apache-atlas-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/apache-atlas-vulnerability-disclosure.yml
 - type: DomainSecurity
