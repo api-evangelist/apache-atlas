@@ -1,0 +1,154 @@
+openapi: 3.0.3
+info:
+  title: Apache Atlas REST Discovery Types API
+  description: The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.
+  version: 2.3.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  contact:
+    name: Apache Atlas Community
+    url: https://atlas.apache.org/
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+servers:
+- url: http://localhost:21000/api/atlas
+  description: Default local Apache Atlas server
+tags:
+- name: Types
+  description: Manage type definitions including entity types, classifications, and relationships.
+paths:
+  /v2/types/typedefs:
+    get:
+      operationId: getAllTypeDefs
+      summary: Apache Atlas Get All Type Definitions
+      description: Retrieve all type definitions including entity types, classification types, and relationship types.
+      tags:
+      - Types
+      parameters:
+      - name: type
+        in: query
+        required: false
+        description: Filter by type category (CLASSIFICATION, ENTITY, ENUM, RELATIONSHIP, STRUCT, BUSINESS_METADATA).
+        schema:
+          type: string
+          example: ENTITY
+      responses:
+        '200':
+          description: Type definitions retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasTypesDef'
+              examples:
+                GetAllTypeDefs200Example:
+                  summary: Default getAllTypeDefs 200 response
+                  x-microcks-default: true
+                  value:
+                    entityDefs:
+                    - name: DataSet
+                      superTypes:
+                      - Asset
+                      serviceType: hadoop
+                    classificationDefs: []
+                    enumDefs: []
+        '401':
+          description: Authentication required.
+      security:
+      - basicAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createTypeDefs
+      summary: Apache Atlas Create Type Definitions
+      description: Create new type definitions for entity types, classification types, relationships, and enumerations.
+      tags:
+      - Types
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AtlasTypesDef'
+      responses:
+        '200':
+          description: Type definitions created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasTypesDef'
+              examples:
+                CreateTypeDefs200Example:
+                  summary: Default createTypeDefs 200 response
+                  x-microcks-default: true
+                  value:
+                    entityDefs:
+                    - name: MyCustomDataSet
+                      superTypes:
+                      - DataSet
+        '400':
+          description: Invalid type definition.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasErrorResponse'
+      security:
+      - basicAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    AtlasErrorResponse:
+      title: AtlasErrorResponse
+      description: Error response from the Apache Atlas REST API.
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: Unique request identifier for tracing.
+          example: req-123456
+        errorCode:
+          type: string
+          description: Atlas error code.
+          example: ATLAS-400-00-004
+        errorMessage:
+          type: string
+          description: Human-readable error message.
+          example: Entity not found for GUID
+    AtlasTypesDef:
+      title: AtlasTypesDef
+      description: Collection of all type definitions in Apache Atlas.
+      type: object
+      properties:
+        entityDefs:
+          type: array
+          items:
+            type: object
+          description: Entity type definitions.
+        classificationDefs:
+          type: array
+          items:
+            type: object
+          description: Classification type definitions.
+        enumDefs:
+          type: array
+          items:
+            type: object
+          description: Enumeration type definitions.
+        relationshipDefs:
+          type: array
+          items:
+            type: object
+          description: Relationship type definitions.
+        businessMetadataDefs:
+          type: array
+          items:
+            type: object
+          description: Business metadata type definitions.
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication with Atlas admin credentials.

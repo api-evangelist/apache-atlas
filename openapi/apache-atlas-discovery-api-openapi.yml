@@ -1,0 +1,208 @@
+openapi: 3.0.3
+info:
+  title: Apache Atlas REST Discovery API
+  description: The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.
+  version: 2.3.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  contact:
+    name: Apache Atlas Community
+    url: https://atlas.apache.org/
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+servers:
+- url: http://localhost:21000/api/atlas
+  description: Default local Apache Atlas server
+tags:
+- name: Discovery
+  description: Search and discover metadata entities using various search strategies.
+paths:
+  /v2/search/basic:
+    get:
+      operationId: basicSearch
+      summary: Apache Atlas Basic Search
+      description: Search for entities using a basic query with filters on type, classification, and attribute values.
+      tags:
+      - Discovery
+      parameters:
+      - name: typeName
+        in: query
+        required: false
+        description: Filter results by entity type name.
+        schema:
+          type: string
+          example: DataSet
+      - name: classification
+        in: query
+        required: false
+        description: Filter by classification/tag applied to the entity.
+        schema:
+          type: string
+          example: PII
+      - name: query
+        in: query
+        required: false
+        description: Attribute-based query string.
+        schema:
+          type: string
+          example: customer
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of results to return.
+        schema:
+          type: integer
+          example: 25
+      - name: offset
+        in: query
+        required: false
+        description: Number of results to skip for pagination.
+        schema:
+          type: integer
+          example: 0
+      responses:
+        '200':
+          description: Search results returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasSearchResult'
+              examples:
+                BasicSearch200Example:
+                  summary: Default basicSearch 200 response
+                  x-microcks-default: true
+                  value:
+                    queryType: BASIC
+                    searchParameters:
+                      typeName: DataSet
+                      limit: 25
+                      offset: 0
+                    entities:
+                    - typeName: DataSet
+                      guid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                      status: ACTIVE
+                      displayText: customer_data
+                    approximateCount: 1
+        '400':
+          description: Invalid search parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasErrorResponse'
+      security:
+      - basicAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v2/search/fulltext:
+    get:
+      operationId: fullTextSearch
+      summary: Apache Atlas Full-Text Search
+      description: Search for entities using full-text search across all indexed attributes.
+      tags:
+      - Discovery
+      parameters:
+      - name: query
+        in: query
+        required: true
+        description: Full-text search query string.
+        schema:
+          type: string
+          example: customer data warehouse
+      - name: typeName
+        in: query
+        required: false
+        description: Filter by entity type.
+        schema:
+          type: string
+          example: DataSet
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of results.
+        schema:
+          type: integer
+          example: 25
+      - name: offset
+        in: query
+        required: false
+        description: Offset for pagination.
+        schema:
+          type: integer
+          example: 0
+      responses:
+        '200':
+          description: Full-text search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasSearchResult'
+              examples:
+                FullTextSearch200Example:
+                  summary: Default fullTextSearch 200 response
+                  x-microcks-default: true
+                  value:
+                    queryType: FULL_TEXT
+                    entities:
+                    - typeName: DataSet
+                      guid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                      status: ACTIVE
+                      displayText: customer_data
+                    approximateCount: 5
+        '400':
+          description: Invalid search parameters.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasErrorResponse'
+      security:
+      - basicAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    AtlasSearchResult:
+      title: AtlasSearchResult
+      description: Result of a search query against the Atlas metadata repository.
+      type: object
+      properties:
+        queryType:
+          type: string
+          description: Type of search query executed.
+          example: BASIC
+        searchParameters:
+          type: object
+          description: The search parameters that were used.
+        entities:
+          type: array
+          items:
+            type: object
+          description: List of matching entity headers.
+        approximateCount:
+          type: integer
+          description: Approximate total count of matching entities.
+          example: 42
+    AtlasErrorResponse:
+      title: AtlasErrorResponse
+      description: Error response from the Apache Atlas REST API.
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: Unique request identifier for tracing.
+          example: req-123456
+        errorCode:
+          type: string
+          description: Atlas error code.
+          example: ATLAS-400-00-004
+        errorMessage:
+          type: string
+          description: Human-readable error message.
+          example: Entity not found for GUID
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication with Atlas admin credentials.

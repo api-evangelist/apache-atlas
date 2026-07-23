@@ -1,0 +1,141 @@
+openapi: 3.0.3
+info:
+  title: Apache Atlas REST Discovery Lineage API
+  description: The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.
+  version: 2.3.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  contact:
+    name: Apache Atlas Community
+    url: https://atlas.apache.org/
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+servers:
+- url: http://localhost:21000/api/atlas
+  description: Default local Apache Atlas server
+tags:
+- name: Lineage
+  description: Track data lineage and provenance between entities.
+paths:
+  /v2/lineage/{guid}:
+    get:
+      operationId: getLineageByGuid
+      summary: Apache Atlas Get Lineage by GUID
+      description: Retrieve data lineage graph for an entity by its GUID, showing upstream and downstream dependencies.
+      tags:
+      - Lineage
+      parameters:
+      - name: guid
+        in: path
+        required: true
+        description: Unique identifier (GUID) of the entity.
+        schema:
+          type: string
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+      - name: direction
+        in: query
+        required: false
+        description: Lineage direction (INPUT, OUTPUT, BOTH).
+        schema:
+          type: string
+          enum:
+          - INPUT
+          - OUTPUT
+          - BOTH
+          default: BOTH
+          example: BOTH
+      - name: depth
+        in: query
+        required: false
+        description: Number of hops to traverse in the lineage graph.
+        schema:
+          type: integer
+          example: 3
+      responses:
+        '200':
+          description: Lineage graph returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasLineageInfo'
+              examples:
+                GetLineageByGuid200Example:
+                  summary: Default getLineageByGuid 200 response
+                  x-microcks-default: true
+                  value:
+                    baseEntityGuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    lineageDirection: BOTH
+                    lineageDepth: 3
+                    guidEntityMap:
+                      a1b2c3d4-e5f6-7890-abcd-ef1234567890:
+                        typeName: DataSet
+                        displayText: customer_data
+                    relations:
+                    - fromEntityId: source-guid
+                      toEntityId: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                      relationshipId: rel-guid
+        '404':
+          description: Entity not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasErrorResponse'
+      security:
+      - basicAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    AtlasLineageInfo:
+      title: AtlasLineageInfo
+      description: Lineage graph information for an entity showing upstream and downstream data flow.
+      type: object
+      properties:
+        baseEntityGuid:
+          type: string
+          description: GUID of the entity whose lineage is being retrieved.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        lineageDirection:
+          type: string
+          description: Direction of lineage traversal.
+          enum:
+          - INPUT
+          - OUTPUT
+          - BOTH
+          example: BOTH
+        lineageDepth:
+          type: integer
+          description: Number of hops traversed in the lineage graph.
+          example: 3
+        guidEntityMap:
+          type: object
+          description: Map of GUID to entity header for all entities in the lineage graph.
+        relations:
+          type: array
+          items:
+            type: object
+          description: List of lineage relationships between entities.
+    AtlasErrorResponse:
+      title: AtlasErrorResponse
+      description: Error response from the Apache Atlas REST API.
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: Unique request identifier for tracing.
+          example: req-123456
+        errorCode:
+          type: string
+          description: Atlas error code.
+          example: ATLAS-400-00-004
+        errorMessage:
+          type: string
+          description: Human-readable error message.
+          example: Entity not found for GUID
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication with Atlas admin credentials.

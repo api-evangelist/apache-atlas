@@ -1,0 +1,329 @@
+openapi: 3.0.3
+info:
+  title: Apache Atlas REST Discovery Entities API
+  description: The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.
+  version: 2.3.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  contact:
+    name: Apache Atlas Community
+    url: https://atlas.apache.org/
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+servers:
+- url: http://localhost:21000/api/atlas
+  description: Default local Apache Atlas server
+tags:
+- name: Entities
+  description: Manage metadata entities (CRUD operations on Atlas entities).
+paths:
+  /v2/entity/guid/{guid}:
+    get:
+      operationId: getEntityByGuid
+      summary: Apache Atlas Get Entity by GUID
+      description: Retrieve a single entity by its GUID, including all attributes and classifications.
+      tags:
+      - Entities
+      parameters:
+      - name: guid
+        in: path
+        required: true
+        description: Unique identifier (GUID) of the entity.
+        schema:
+          type: string
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+      - name: minExtInfo
+        in: query
+        required: false
+        description: If true, minimize related entity information in the response.
+        schema:
+          type: boolean
+          example: false
+      - name: ignoreRelationships
+        in: query
+        required: false
+        description: If true, ignore relationship attributes in the response.
+        schema:
+          type: boolean
+          example: false
+      responses:
+        '200':
+          description: Entity retrieved successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityWithExtInfo'
+              examples:
+                GetEntityByGuid200Example:
+                  summary: Default getEntityByGuid 200 response
+                  x-microcks-default: true
+                  value:
+                    entity:
+                      typeName: DataSet
+                      guid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                      status: ACTIVE
+                      attributes:
+                        name: customer_data
+                        qualifiedName: customer_data@prod
+                        description: Customer data entity
+        '404':
+          description: Entity not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasErrorResponse'
+        '401':
+          description: Authentication required.
+      security:
+      - basicAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateEntityByGuid
+      summary: Apache Atlas Update Entity by GUID
+      description: Update an existing entity's attributes by GUID.
+      tags:
+      - Entities
+      parameters:
+      - name: guid
+        in: path
+        required: true
+        description: Unique identifier (GUID) of the entity to update.
+        schema:
+          type: string
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AtlasEntityWithExtInfo'
+      responses:
+        '200':
+          description: Entity updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityMutationResponse'
+              examples:
+                UpdateEntityByGuid200Example:
+                  summary: Default updateEntityByGuid 200 response
+                  x-microcks-default: true
+                  value:
+                    guidAssignments: {}
+                    mutatedEntities:
+                      UPDATE:
+                      - typeName: DataSet
+                        guid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        '400':
+          description: Invalid request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasErrorResponse'
+        '404':
+          description: Entity not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasErrorResponse'
+      security:
+      - basicAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteEntityByGuid
+      summary: Apache Atlas Delete Entity by GUID
+      description: Delete an entity by its GUID (soft-delete, changes status to DELETED).
+      tags:
+      - Entities
+      parameters:
+      - name: guid
+        in: path
+        required: true
+        description: Unique identifier (GUID) of the entity to delete.
+        schema:
+          type: string
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+      responses:
+        '200':
+          description: Entity deleted successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityMutationResponse'
+              examples:
+                DeleteEntityByGuid200Example:
+                  summary: Default deleteEntityByGuid 200 response
+                  x-microcks-default: true
+                  value:
+                    guidAssignments: {}
+                    mutatedEntities:
+                      DELETE:
+                      - typeName: DataSet
+                        guid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        '404':
+          description: Entity not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasErrorResponse'
+      security:
+      - basicAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /v2/entity/bulk:
+    post:
+      operationId: createOrUpdateEntities
+      summary: Apache Atlas Create or Update Entities in Bulk
+      description: Create or update one or more entities in bulk.
+      tags:
+      - Entities
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AtlasEntitiesWithExtInfo'
+      responses:
+        '200':
+          description: Entities created or updated successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EntityMutationResponse'
+              examples:
+                CreateOrUpdateEntities200Example:
+                  summary: Default createOrUpdateEntities 200 response
+                  x-microcks-default: true
+                  value:
+                    guidAssignments:
+                      '-1': a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    mutatedEntities:
+                      CREATE:
+                      - typeName: DataSet
+                        guid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        '400':
+          description: Invalid entity data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasErrorResponse'
+      security:
+      - basicAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    AtlasEntity:
+      title: AtlasEntity
+      description: Represents a single metadata entity in Apache Atlas.
+      type: object
+      properties:
+        typeName:
+          type: string
+          description: The type name of the entity.
+          example: DataSet
+        guid:
+          type: string
+          description: Globally unique identifier for the entity.
+          example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        status:
+          type: string
+          description: Entity status (ACTIVE or DELETED).
+          enum:
+          - ACTIVE
+          - DELETED
+          example: ACTIVE
+        attributes:
+          type: object
+          description: Map of attribute name to attribute value.
+          example:
+            name: customer_data
+            qualifiedName: customer_data@prod
+        labels:
+          type: array
+          items:
+            type: string
+          description: Set of labels/tags applied to the entity.
+          example:
+          - PII
+          - Finance
+        classifications:
+          type: array
+          items:
+            type: object
+          description: Classifications applied to the entity.
+    AtlasEntityWithExtInfo:
+      title: AtlasEntityWithExtInfo
+      description: Entity with extended information for create/update operations.
+      type: object
+      properties:
+        entity:
+          $ref: '#/components/schemas/AtlasEntity'
+        referredEntities:
+          type: object
+          description: Map of referenced entities.
+    AtlasEntitiesWithExtInfo:
+      title: AtlasEntitiesWithExtInfo
+      description: Multiple entities with extended information for bulk operations.
+      type: object
+      properties:
+        entities:
+          type: array
+          items:
+            $ref: '#/components/schemas/AtlasEntity'
+          description: List of entities to create or update.
+        referredEntities:
+          type: object
+          description: Map of referenced entities.
+    EntityWithExtInfo:
+      title: EntityWithExtInfo
+      description: An entity with its extended information (referred entities, classifications).
+      type: object
+      properties:
+        entity:
+          $ref: '#/components/schemas/AtlasEntity'
+        referredEntities:
+          type: object
+          description: Map of GUID to related entity for entities referenced by this entity.
+    AtlasErrorResponse:
+      title: AtlasErrorResponse
+      description: Error response from the Apache Atlas REST API.
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: Unique request identifier for tracing.
+          example: req-123456
+        errorCode:
+          type: string
+          description: Atlas error code.
+          example: ATLAS-400-00-004
+        errorMessage:
+          type: string
+          description: Human-readable error message.
+          example: Entity not found for GUID
+    EntityMutationResponse:
+      title: EntityMutationResponse
+      description: Response from entity create, update, or delete operations.
+      type: object
+      properties:
+        guidAssignments:
+          type: object
+          description: Map of client-side temporary GUIDs to server-assigned GUIDs.
+          example:
+            '-1': a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        mutatedEntities:
+          type: object
+          description: Map of mutation type (CREATE, UPDATE, DELETE) to list of mutated entity headers.
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication with Atlas admin credentials.

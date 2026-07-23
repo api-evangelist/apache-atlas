@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: Apache Atlas REST Discovery Relationships API
+  description: The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.
+  version: 2.3.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  contact:
+    name: Apache Atlas Community
+    url: https://atlas.apache.org/
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+servers:
+- url: http://localhost:21000/api/atlas
+  description: Default local Apache Atlas server
+tags:
+- name: Relationships
+  description: Manage relationships between entities.
+paths:
+  /v2/relationship:
+    post:
+      operationId: createRelationship
+      summary: Apache Atlas Create Relationship
+      description: Create a new relationship between two entities.
+      tags:
+      - Relationships
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AtlasRelationship'
+      responses:
+        '200':
+          description: Relationship created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasRelationship'
+              examples:
+                CreateRelationship200Example:
+                  summary: Default createRelationship 200 response
+                  x-microcks-default: true
+                  value:
+                    guid: rel-guid-001
+                    typeName: DataSetLineage
+                    status: ACTIVE
+                    end1:
+                      guid: source-entity-guid
+                      typeName: DataSet
+                    end2:
+                      guid: target-entity-guid
+                      typeName: DataSet
+        '400':
+          description: Invalid relationship data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasErrorResponse'
+      security:
+      - basicAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    AtlasRelationship:
+      title: AtlasRelationship
+      description: A relationship between two Atlas entities.
+      type: object
+      properties:
+        guid:
+          type: string
+          description: GUID of the relationship.
+          example: rel-guid-001
+        typeName:
+          type: string
+          description: Type name of the relationship.
+          example: DataSetLineage
+        status:
+          type: string
+          description: Status of the relationship.
+          enum:
+          - ACTIVE
+          - DELETED
+          example: ACTIVE
+        end1:
+          type: object
+          description: First endpoint of the relationship.
+          properties:
+            guid:
+              type: string
+              example: source-entity-guid
+            typeName:
+              type: string
+              example: DataSet
+        end2:
+          type: object
+          description: Second endpoint of the relationship.
+          properties:
+            guid:
+              type: string
+              example: target-entity-guid
+            typeName:
+              type: string
+              example: DataSet
+    AtlasErrorResponse:
+      title: AtlasErrorResponse
+      description: Error response from the Apache Atlas REST API.
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: Unique request identifier for tracing.
+          example: req-123456
+        errorCode:
+          type: string
+          description: Atlas error code.
+          example: ATLAS-400-00-004
+        errorMessage:
+          type: string
+          description: Human-readable error message.
+          example: Entity not found for GUID
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication with Atlas admin credentials.

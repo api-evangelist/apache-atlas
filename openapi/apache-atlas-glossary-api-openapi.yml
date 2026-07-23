@@ -1,0 +1,157 @@
+openapi: 3.0.3
+info:
+  title: Apache Atlas REST Discovery Glossary API
+  description: The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.
+  version: 2.3.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  contact:
+    name: Apache Atlas Community
+    url: https://atlas.apache.org/
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+servers:
+- url: http://localhost:21000/api/atlas
+  description: Default local Apache Atlas server
+tags:
+- name: Glossary
+  description: Manage business glossary terms and categories.
+paths:
+  /v2/glossary:
+    get:
+      operationId: listGlossaries
+      summary: Apache Atlas List Glossaries
+      description: Retrieve all business glossaries with optional pagination.
+      tags:
+      - Glossary
+      parameters:
+      - name: limit
+        in: query
+        required: false
+        description: Maximum number of glossaries to return.
+        schema:
+          type: integer
+          example: 25
+      - name: offset
+        in: query
+        required: false
+        description: Number of glossaries to skip.
+        schema:
+          type: integer
+          example: 0
+      responses:
+        '200':
+          description: Glossaries retrieved successfully.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AtlasGlossary'
+              examples:
+                ListGlossaries200Example:
+                  summary: Default listGlossaries 200 response
+                  x-microcks-default: true
+                  value:
+                  - guid: glossary-guid-001
+                    name: BusinessGlossary
+                    shortDescription: Enterprise business glossary
+                    termCount: 42
+        '401':
+          description: Authentication required.
+      security:
+      - basicAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createGlossary
+      summary: Apache Atlas Create Glossary
+      description: Create a new business glossary.
+      tags:
+      - Glossary
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AtlasGlossary'
+      responses:
+        '200':
+          description: Glossary created successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasGlossary'
+              examples:
+                CreateGlossary200Example:
+                  summary: Default createGlossary 200 response
+                  x-microcks-default: true
+                  value:
+                    guid: glossary-guid-002
+                    name: DataGovernance
+                    shortDescription: Data governance terms
+        '400':
+          description: Invalid glossary data.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AtlasErrorResponse'
+      security:
+      - basicAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    AtlasErrorResponse:
+      title: AtlasErrorResponse
+      description: Error response from the Apache Atlas REST API.
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: Unique request identifier for tracing.
+          example: req-123456
+        errorCode:
+          type: string
+          description: Atlas error code.
+          example: ATLAS-400-00-004
+        errorMessage:
+          type: string
+          description: Human-readable error message.
+          example: Entity not found for GUID
+    AtlasGlossary:
+      title: AtlasGlossary
+      description: A business glossary containing terms and categories for data governance.
+      type: object
+      properties:
+        guid:
+          type: string
+          description: Unique identifier of the glossary.
+          example: glossary-guid-001
+        name:
+          type: string
+          description: Name of the glossary.
+          example: BusinessGlossary
+        shortDescription:
+          type: string
+          description: Short description of the glossary.
+          example: Enterprise business glossary for data governance
+        longDescription:
+          type: string
+          description: Long description of the glossary.
+        language:
+          type: string
+          description: Language of the glossary.
+          example: en
+        termCount:
+          type: integer
+          description: Number of terms in this glossary.
+          example: 42
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication with Atlas admin credentials.
