@@ -6,9 +6,22 @@ description: Apache Atlas is a scalable and extensible set of core foundational 
   business glossary, and a REST API for programmatic governance operations. It supports discovery, auditing, and policy management
   for enterprise data assets.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/apache-atlas.png
 tags:
 - Apache
 - Big Data
@@ -23,22 +36,148 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/apache-atlas/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-- aid: apache-atlas:apache-atlas-rest-api
-  name: Apache Atlas REST API
-  description: The Atlas REST API provides endpoints for managing types, entities, lineage, discovery, and glossary resources,
-    enabling programmatic metadata management and data governance operations. It covers entity CRUD, type definitions, basic
-    and full-text search, lineage tracking, relationship management, and business glossary management.
+- aid: apache-atlas:apache-atlas-discovery-api
+  name: Apache Atlas Discovery API
+  description: Search and discover metadata entities using various search strategies.
   humanURL: https://atlas.apache.org/api/v2/index.html
   baseURL: http://localhost:21000/api/atlas
   tags:
-  - Governance
-  - Metadata
-  - REST
+  - Discovery
   properties:
+  - type: OpenAPI
+    url: openapi/apache-atlas-discovery-api-openapi.yml
   - type: Documentation
     url: https://atlas.apache.org/api/v2/index.html
+  - type: GettingStarted
+    url: https://atlas.apache.org/quick_start_v2.html
+  - type: X-NaftikoCapability
+    url: capabilities/rest-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-entities.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-glossary.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-lineage.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-relationships.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-types.yaml
+- aid: apache-atlas:apache-atlas-entities-api
+  name: Apache Atlas Entities API
+  description: Manage metadata entities (CRUD operations on Atlas entities).
+  humanURL: https://atlas.apache.org/api/v2/index.html
+  baseURL: http://localhost:21000/api/atlas
+  tags:
+  - Entities
+  properties:
   - type: OpenAPI
-    url: openapi/apache-atlas-rest-openapi.yaml
+    url: openapi/apache-atlas-entities-api-openapi.yml
+  - type: Documentation
+    url: https://atlas.apache.org/api/v2/index.html
+  - type: GettingStarted
+    url: https://atlas.apache.org/quick_start_v2.html
+  - type: X-NaftikoCapability
+    url: capabilities/rest-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-entities.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-glossary.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-lineage.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-relationships.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-types.yaml
+- aid: apache-atlas:apache-atlas-glossary-api
+  name: Apache Atlas Glossary API
+  description: Manage business glossary terms and categories.
+  humanURL: https://atlas.apache.org/api/v2/index.html
+  baseURL: http://localhost:21000/api/atlas
+  tags:
+  - Glossary
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-atlas-glossary-api-openapi.yml
+  - type: Documentation
+    url: https://atlas.apache.org/api/v2/index.html
+  - type: GettingStarted
+    url: https://atlas.apache.org/quick_start_v2.html
+  - type: X-NaftikoCapability
+    url: capabilities/rest-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-entities.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-glossary.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-lineage.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-relationships.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-types.yaml
+- aid: apache-atlas:apache-atlas-lineage-api
+  name: Apache Atlas Lineage API
+  description: Track data lineage and provenance between entities.
+  humanURL: https://atlas.apache.org/api/v2/index.html
+  baseURL: http://localhost:21000/api/atlas
+  tags:
+  - Lineage
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-atlas-lineage-api-openapi.yml
+  - type: Documentation
+    url: https://atlas.apache.org/api/v2/index.html
+  - type: GettingStarted
+    url: https://atlas.apache.org/quick_start_v2.html
+  - type: X-NaftikoCapability
+    url: capabilities/rest-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-entities.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-glossary.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-lineage.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-relationships.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-types.yaml
+- aid: apache-atlas:apache-atlas-relationships-api
+  name: Apache Atlas Relationships API
+  description: Manage relationships between entities.
+  humanURL: https://atlas.apache.org/api/v2/index.html
+  baseURL: http://localhost:21000/api/atlas
+  tags:
+  - Relationships
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-atlas-relationships-api-openapi.yml
+  - type: Documentation
+    url: https://atlas.apache.org/api/v2/index.html
+  - type: GettingStarted
+    url: https://atlas.apache.org/quick_start_v2.html
+  - type: X-NaftikoCapability
+    url: capabilities/rest-discovery.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-entities.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-glossary.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-lineage.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-relationships.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/rest-types.yaml
+- aid: apache-atlas:apache-atlas-types-api
+  name: Apache Atlas Types API
+  description: Manage type definitions including entity types, classifications, and relationships.
+  humanURL: https://atlas.apache.org/api/v2/index.html
+  baseURL: http://localhost:21000/api/atlas
+  tags:
+  - Types
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-atlas-types-api-openapi.yml
+  - type: Documentation
+    url: https://atlas.apache.org/api/v2/index.html
   - type: GettingStarted
     url: https://atlas.apache.org/quick_start_v2.html
   - type: X-NaftikoCapability
@@ -54,6 +193,8 @@ apis:
   - type: X-NaftikoCapability
     url: capabilities/rest-types.yaml
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/apache-atlas/overview
 - type: AgenticAccess
   url: agentic-access/apache-atlas-agentic-access.yml
 - type: VulnerabilityDisclosure
