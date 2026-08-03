@@ -1,0 +1,24 @@
+{
+  "provider": "apache-atlas",
+  "sources": [
+    "apache-atlas-discovery-api-openapi.yml",
+    "apache-atlas-entities-api-openapi.yml",
+    "apache-atlas-glossary-api-openapi.yml",
+    "apache-atlas-lineage-api-openapi.yml",
+    "apache-atlas-relationships-api-openapi.yml",
+    "apache-atlas-types-api-openapi.yml"
+  ],
+  "outputs": [
+    "apache-atlas-discovery-api-openapi.yml",
+    "apache-atlas-entities-api-openapi.yml",
+    "apache-atlas-glossary-api-openapi.yml",
+    "apache-atlas-lineage-api-openapi.yml",
+    "apache-atlas-relationships-api-openapi.yml",
+    "apache-atlas-types-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

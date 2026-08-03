@@ -1,0 +1,237 @@
+{
+  "info": {
+    "_postman_id": "478af010-8399-40da-9057-ec144e6c872a",
+    "name": "Apache Atlas REST Discovery Lineage API",
+    "description": "The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.\n\nContact Support:\n Name: Apache Atlas Community",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:01:35.000Z",
+    "updatedAt": "2026-07-28T01:01:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-478af010-8399-40da-9057-ec144e6c872a"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "lineage",
+          "item": [
+            {
+              "name": "{guid}",
+              "item": [
+                {
+                  "name": "Apache Atlas Get Lineage by GUID",
+                  "id": "b758fb1d-4126-4bcd-aafd-69a818d7305b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/lineage/:guid?direction=BOTH&depth=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "lineage",
+                        ":guid"
+                      ],
+                      "query": [
+                        {
+                          "description": "Lineage direction (INPUT, OUTPUT, BOTH).",
+                          "key": "direction",
+                          "value": "BOTH"
+                        },
+                        {
+                          "description": "Number of hops to traverse in the lineage graph.",
+                          "key": "depth",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "3f1c0e94-dbdd-4986-a4ce-bafa948d76f2",
+                          "key": "guid",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier (GUID) of the entity."
+                        }
+                      ]
+                    },
+                    "description": "Retrieve data lineage graph for an entity by its GUID, showing upstream and downstream dependencies."
+                  },
+                  "response": [
+                    {
+                      "id": "8c9cbf27-442d-42da-9492-a128d6dd497e",
+                      "name": "Lineage graph returned successfully.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/lineage/:guid?direction=BOTH&depth=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "lineage",
+                            ":guid"
+                          ],
+                          "query": [
+                            {
+                              "description": "Lineage direction (INPUT, OUTPUT, BOTH).",
+                              "key": "direction",
+                              "value": "BOTH"
+                            },
+                            {
+                              "description": "Number of hops to traverse in the lineage graph.",
+                              "key": "depth",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "guid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"baseEntityGuid\": \"<string>\",\n  \"lineageDirection\": \"OUTPUT\",\n  \"lineageDepth\": \"<integer>\",\n  \"guidEntityMap\": {}\n}",
+                      "createdAt": "2026-07-28T01:01:36.000Z",
+                      "updatedAt": "2026-07-28T01:01:36.000Z",
+                      "uid": "35240-8c9cbf27-442d-42da-9492-a128d6dd497e"
+                    },
+                    {
+                      "id": "dd2f1962-ea97-4ace-946c-4c80d1475b62",
+                      "name": "Entity not found.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/lineage/:guid?direction=BOTH&depth=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "lineage",
+                            ":guid"
+                          ],
+                          "query": [
+                            {
+                              "description": "Lineage direction (INPUT, OUTPUT, BOTH).",
+                              "key": "direction",
+                              "value": "BOTH"
+                            },
+                            {
+                              "description": "Number of hops to traverse in the lineage graph.",
+                              "key": "depth",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "guid"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"requestId\": \"<string>\",\n  \"errorCode\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:36.000Z",
+                      "updatedAt": "2026-07-28T01:01:36.000Z",
+                      "uid": "35240-dd2f1962-ea97-4ace-946c-4c80d1475b62"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:01:36.000Z",
+                  "updatedAt": "2026-07-28T01:01:36.000Z",
+                  "uid": "35240-b758fb1d-4126-4bcd-aafd-69a818d7305b"
+                }
+              ],
+              "id": "77dbf9e6-a8df-4f96-8bed-1aa51ab9baa3",
+              "createdAt": "2026-07-28T01:01:36.000Z",
+              "updatedAt": "2026-07-28T01:01:36.000Z",
+              "uid": "35240-77dbf9e6-a8df-4f96-8bed-1aa51ab9baa3"
+            }
+          ],
+          "id": "779c356d-edbd-4009-a364-a899590e9234",
+          "createdAt": "2026-07-28T01:01:36.000Z",
+          "updatedAt": "2026-07-28T01:01:36.000Z",
+          "uid": "35240-779c356d-edbd-4009-a364-a899590e9234"
+        }
+      ],
+      "id": "ec5a5f05-c185-47e2-93df-2e6bc775bcf9",
+      "createdAt": "2026-07-28T01:01:36.000Z",
+      "updatedAt": "2026-07-28T01:01:36.000Z",
+      "uid": "35240-ec5a5f05-c185-47e2-93df-2e6bc775bcf9"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:21000/api/atlas"
+    }
+  ]
+}

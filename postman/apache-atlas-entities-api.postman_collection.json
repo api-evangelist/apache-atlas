@@ -1,0 +1,909 @@
+{
+  "info": {
+    "_postman_id": "8c195f75-e4f6-408e-9bba-cdb5a819b774",
+    "name": "Apache Atlas REST Discovery Entities API",
+    "description": "The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.\n\nContact Support:\n Name: Apache Atlas Community",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:01:33.000Z",
+    "updatedAt": "2026-07-28T01:01:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8c195f75-e4f6-408e-9bba-cdb5a819b774"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "entity",
+          "item": [
+            {
+              "name": "guid",
+              "item": [
+                {
+                  "name": "{guid}",
+                  "item": [
+                    {
+                      "name": "Apache Atlas Get Entity by GUID",
+                      "id": "a3a96582-799e-4437-8a5d-98b2d4d9069e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "basic",
+                          "basic": [
+                            {
+                              "key": "username",
+                              "value": "{{basicAuthUsername}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "password",
+                              "value": "{{basicAuthPassword}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/entity/guid/:guid?minExtInfo=<boolean>&ignoreRelationships=<boolean>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "entity",
+                            "guid",
+                            ":guid"
+                          ],
+                          "query": [
+                            {
+                              "description": "If true, minimize related entity information in the response.",
+                              "key": "minExtInfo",
+                              "value": "<boolean>"
+                            },
+                            {
+                              "description": "If true, ignore relationship attributes in the response.",
+                              "key": "ignoreRelationships",
+                              "value": "<boolean>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "5948eac1-1664-452f-a167-99c26795606a",
+                              "key": "guid",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier (GUID) of the entity."
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a single entity by its GUID, including all attributes and classifications."
+                      },
+                      "response": [
+                        {
+                          "id": "8cea5096-ea45-473a-abc1-83f8fec99382",
+                          "name": "Entity retrieved successfully.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/entity/guid/:guid?minExtInfo=<boolean>&ignoreRelationships=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "entity",
+                                "guid",
+                                ":guid"
+                              ],
+                              "query": [
+                                {
+                                  "description": "If true, minimize related entity information in the response.",
+                                  "key": "minExtInfo",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "If true, ignore relationship attributes in the response.",
+                                  "key": "ignoreRelationships",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "guid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"entity\": {\n    \"typeName\": \"<string>\",\n    \"guid\": \"<string>\",\n    \"status\": \"DELETED\",\n    \"attributes\": {},\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"referredEntities\": {}\n}",
+                          "createdAt": "2026-07-28T01:01:34.000Z",
+                          "updatedAt": "2026-07-28T01:01:34.000Z",
+                          "uid": "35240-8cea5096-ea45-473a-abc1-83f8fec99382"
+                        },
+                        {
+                          "id": "4f5a8d1c-c171-4256-be83-f3ed90bce288",
+                          "name": "Authentication required.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/entity/guid/:guid?minExtInfo=<boolean>&ignoreRelationships=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "entity",
+                                "guid",
+                                ":guid"
+                              ],
+                              "query": [
+                                {
+                                  "description": "If true, minimize related entity information in the response.",
+                                  "key": "minExtInfo",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "If true, ignore relationship attributes in the response.",
+                                  "key": "ignoreRelationships",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "guid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:01:34.000Z",
+                          "updatedAt": "2026-07-28T01:01:34.000Z",
+                          "uid": "35240-4f5a8d1c-c171-4256-be83-f3ed90bce288"
+                        },
+                        {
+                          "id": "15c99581-1b3a-4401-a3d1-2c6b1bd5722e",
+                          "name": "Entity not found.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/entity/guid/:guid?minExtInfo=<boolean>&ignoreRelationships=<boolean>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "entity",
+                                "guid",
+                                ":guid"
+                              ],
+                              "query": [
+                                {
+                                  "description": "If true, minimize related entity information in the response.",
+                                  "key": "minExtInfo",
+                                  "value": "<boolean>"
+                                },
+                                {
+                                  "description": "If true, ignore relationship attributes in the response.",
+                                  "key": "ignoreRelationships",
+                                  "value": "<boolean>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "guid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"requestId\": \"<string>\",\n  \"errorCode\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:01:34.000Z",
+                          "updatedAt": "2026-07-28T01:01:34.000Z",
+                          "uid": "35240-15c99581-1b3a-4401-a3d1-2c6b1bd5722e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:01:34.000Z",
+                      "updatedAt": "2026-07-28T01:01:34.000Z",
+                      "uid": "35240-a3a96582-799e-4437-8a5d-98b2d4d9069e"
+                    },
+                    {
+                      "name": "Apache Atlas Update Entity by GUID",
+                      "id": "92fcd730-445a-4d02-bd77-b83c248f7f67",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "basic",
+                          "basic": [
+                            {
+                              "key": "username",
+                              "value": "{{basicAuthUsername}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "password",
+                              "value": "{{basicAuthPassword}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"entity\": {\n    \"typeName\": \"<string>\",\n    \"guid\": \"<string>\",\n    \"status\": \"DELETED\",\n    \"attributes\": {},\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"referredEntities\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/entity/guid/:guid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "entity",
+                            "guid",
+                            ":guid"
+                          ],
+                          "variable": [
+                            {
+                              "id": "8ee2ed6e-995e-4803-a548-3d3647bd9e0e",
+                              "key": "guid",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier (GUID) of the entity to update."
+                            }
+                          ]
+                        },
+                        "description": "Update an existing entity's attributes by GUID."
+                      },
+                      "response": [
+                        {
+                          "id": "42be672d-4968-4073-b894-689e4b89d72b",
+                          "name": "Entity updated successfully.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"entity\": {\n    \"typeName\": \"<string>\",\n    \"guid\": \"<string>\",\n    \"status\": \"DELETED\",\n    \"attributes\": {},\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"referredEntities\": {}\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/entity/guid/:guid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "entity",
+                                "guid",
+                                ":guid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "guid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"guidAssignments\": {},\n  \"mutatedEntities\": {}\n}",
+                          "createdAt": "2026-07-28T01:01:34.000Z",
+                          "updatedAt": "2026-07-28T01:01:34.000Z",
+                          "uid": "35240-42be672d-4968-4073-b894-689e4b89d72b"
+                        },
+                        {
+                          "id": "6ff4658a-6ff6-4101-81d3-b380767e990f",
+                          "name": "Invalid request.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"entity\": {\n    \"typeName\": \"<string>\",\n    \"guid\": \"<string>\",\n    \"status\": \"DELETED\",\n    \"attributes\": {},\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"referredEntities\": {}\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/entity/guid/:guid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "entity",
+                                "guid",
+                                ":guid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "guid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"requestId\": \"<string>\",\n  \"errorCode\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:01:34.000Z",
+                          "updatedAt": "2026-07-28T01:01:34.000Z",
+                          "uid": "35240-6ff4658a-6ff6-4101-81d3-b380767e990f"
+                        },
+                        {
+                          "id": "1aa5ced9-cd58-4ff5-afd0-1a9f29f31739",
+                          "name": "Entity not found.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"entity\": {\n    \"typeName\": \"<string>\",\n    \"guid\": \"<string>\",\n    \"status\": \"DELETED\",\n    \"attributes\": {},\n    \"labels\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"referredEntities\": {}\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/entity/guid/:guid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "entity",
+                                "guid",
+                                ":guid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "guid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"requestId\": \"<string>\",\n  \"errorCode\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:01:34.000Z",
+                          "updatedAt": "2026-07-28T01:01:34.000Z",
+                          "uid": "35240-1aa5ced9-cd58-4ff5-afd0-1a9f29f31739"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:01:34.000Z",
+                      "updatedAt": "2026-07-28T01:01:34.000Z",
+                      "uid": "35240-92fcd730-445a-4d02-bd77-b83c248f7f67"
+                    },
+                    {
+                      "name": "Apache Atlas Delete Entity by GUID",
+                      "id": "8f916417-40a6-409a-a3a0-136a004f20a2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "basic",
+                          "basic": [
+                            {
+                              "key": "username",
+                              "value": "{{basicAuthUsername}}",
+                              "type": "string"
+                            },
+                            {
+                              "key": "password",
+                              "value": "{{basicAuthPassword}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/entity/guid/:guid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "entity",
+                            "guid",
+                            ":guid"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c2d449fb-899a-4f2d-a42b-eb534ef140c9",
+                              "key": "guid",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier (GUID) of the entity to delete."
+                            }
+                          ]
+                        },
+                        "description": "Delete an entity by its GUID (soft-delete, changes status to DELETED)."
+                      },
+                      "response": [
+                        {
+                          "id": "0ef6554a-53f7-46de-939a-93f49cea9312",
+                          "name": "Entity deleted successfully.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/entity/guid/:guid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "entity",
+                                "guid",
+                                ":guid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "guid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"guidAssignments\": {},\n  \"mutatedEntities\": {}\n}",
+                          "createdAt": "2026-07-28T01:01:34.000Z",
+                          "updatedAt": "2026-07-28T01:01:34.000Z",
+                          "uid": "35240-0ef6554a-53f7-46de-939a-93f49cea9312"
+                        },
+                        {
+                          "id": "19ed2319-cf68-4340-93e9-6dcafe5e7ffb",
+                          "name": "Entity not found.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/v2/entity/guid/:guid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "v2",
+                                "entity",
+                                "guid",
+                                ":guid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "guid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"requestId\": \"<string>\",\n  \"errorCode\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T01:01:34.000Z",
+                          "updatedAt": "2026-07-28T01:01:34.000Z",
+                          "uid": "35240-19ed2319-cf68-4340-93e9-6dcafe5e7ffb"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:01:34.000Z",
+                      "updatedAt": "2026-07-28T01:01:34.000Z",
+                      "uid": "35240-8f916417-40a6-409a-a3a0-136a004f20a2"
+                    }
+                  ],
+                  "id": "9b3c6dc7-5d35-4775-9860-e6ddd661f885",
+                  "createdAt": "2026-07-28T01:01:34.000Z",
+                  "updatedAt": "2026-07-28T01:01:34.000Z",
+                  "uid": "35240-9b3c6dc7-5d35-4775-9860-e6ddd661f885"
+                }
+              ],
+              "id": "fa2c4d63-9883-46e0-b200-6e1d9a48c18d",
+              "createdAt": "2026-07-28T01:01:34.000Z",
+              "updatedAt": "2026-07-28T01:01:34.000Z",
+              "uid": "35240-fa2c4d63-9883-46e0-b200-6e1d9a48c18d"
+            },
+            {
+              "name": "bulk",
+              "item": [
+                {
+                  "name": "Apache Atlas Create or Update Entities in Bulk",
+                  "id": "55973c20-9420-44b3-adcc-ba6d5944607f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"entities\": [\n    {\n      \"typeName\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"status\": \"ACTIVE\",\n      \"attributes\": {},\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"typeName\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"status\": \"DELETED\",\n      \"attributes\": {},\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"referredEntities\": {}\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/entity/bulk",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "entity",
+                        "bulk"
+                      ]
+                    },
+                    "description": "Create or update one or more entities in bulk."
+                  },
+                  "response": [
+                    {
+                      "id": "54a11154-5af6-4419-a9b4-708f12073d2c",
+                      "name": "Entities created or updated successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"entities\": [\n    {\n      \"typeName\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"status\": \"ACTIVE\",\n      \"attributes\": {},\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"typeName\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"status\": \"DELETED\",\n      \"attributes\": {},\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"referredEntities\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/entity/bulk",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "entity",
+                            "bulk"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"guidAssignments\": {},\n  \"mutatedEntities\": {}\n}",
+                      "createdAt": "2026-07-28T01:01:34.000Z",
+                      "updatedAt": "2026-07-28T01:01:34.000Z",
+                      "uid": "35240-54a11154-5af6-4419-a9b4-708f12073d2c"
+                    },
+                    {
+                      "id": "709203d4-5d30-4dd2-a45d-90875638370c",
+                      "name": "Invalid entity data.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"entities\": [\n    {\n      \"typeName\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"status\": \"ACTIVE\",\n      \"attributes\": {},\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"typeName\": \"<string>\",\n      \"guid\": \"<string>\",\n      \"status\": \"DELETED\",\n      \"attributes\": {},\n      \"labels\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"referredEntities\": {}\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/entity/bulk",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "entity",
+                            "bulk"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"requestId\": \"<string>\",\n  \"errorCode\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:34.000Z",
+                      "updatedAt": "2026-07-28T01:01:34.000Z",
+                      "uid": "35240-709203d4-5d30-4dd2-a45d-90875638370c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:01:34.000Z",
+                  "updatedAt": "2026-07-28T01:01:34.000Z",
+                  "uid": "35240-55973c20-9420-44b3-adcc-ba6d5944607f"
+                }
+              ],
+              "id": "98f0f5f8-c702-4e1f-9a7c-5ab9b0f3d1e5",
+              "createdAt": "2026-07-28T01:01:34.000Z",
+              "updatedAt": "2026-07-28T01:01:34.000Z",
+              "uid": "35240-98f0f5f8-c702-4e1f-9a7c-5ab9b0f3d1e5"
+            }
+          ],
+          "id": "f98754af-d1ad-4531-b4b0-a6103bb9d90b",
+          "createdAt": "2026-07-28T01:01:34.000Z",
+          "updatedAt": "2026-07-28T01:01:34.000Z",
+          "uid": "35240-f98754af-d1ad-4531-b4b0-a6103bb9d90b"
+        }
+      ],
+      "id": "d9048002-8c7a-4267-b80e-4a4a13718ad8",
+      "createdAt": "2026-07-28T01:01:34.000Z",
+      "updatedAt": "2026-07-28T01:01:34.000Z",
+      "uid": "35240-d9048002-8c7a-4267-b80e-4a4a13718ad8"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:21000/api/atlas"
+    }
+  ]
+}

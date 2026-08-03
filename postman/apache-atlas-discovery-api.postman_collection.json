@@ -1,0 +1,475 @@
+{
+  "info": {
+    "_postman_id": "ed403530-b16a-4fc0-b000-76202d5595fe",
+    "name": "Apache Atlas REST Discovery API",
+    "description": "The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.\n\nContact Support:\n Name: Apache Atlas Community",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:01:31.000Z",
+    "updatedAt": "2026-07-28T01:01:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ed403530-b16a-4fc0-b000-76202d5595fe"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "search",
+          "item": [
+            {
+              "name": "basic",
+              "item": [
+                {
+                  "name": "Apache Atlas Basic Search",
+                  "id": "9def5f23-3692-4e9c-95d5-c9eceab8d3cd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/search/basic?typeName=<string>&classification=<string>&query=<string>&limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "search",
+                        "basic"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter results by entity type name.",
+                          "key": "typeName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by classification/tag applied to the entity.",
+                          "key": "classification",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Attribute-based query string.",
+                          "key": "query",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of results to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of results to skip for pagination.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "description": "Search for entities using a basic query with filters on type, classification, and attribute values."
+                  },
+                  "response": [
+                    {
+                      "id": "2cf96bf9-dd03-40f5-9f8d-96d628b723f5",
+                      "name": "Search results returned successfully.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/search/basic?typeName=<string>&classification=<string>&query=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "search",
+                            "basic"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter results by entity type name.",
+                              "key": "typeName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by classification/tag applied to the entity.",
+                              "key": "classification",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Attribute-based query string.",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of results to return.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of results to skip for pagination.",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"queryType\": \"<string>\",\n  \"searchParameters\": {},\n  \"approximateCount\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:01:31.000Z",
+                      "updatedAt": "2026-07-28T01:01:31.000Z",
+                      "uid": "35240-2cf96bf9-dd03-40f5-9f8d-96d628b723f5"
+                    },
+                    {
+                      "id": "1037d96f-07c2-4b9e-bb64-b4104342ec72",
+                      "name": "Invalid search parameters.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/search/basic?typeName=<string>&classification=<string>&query=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "search",
+                            "basic"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter results by entity type name.",
+                              "key": "typeName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by classification/tag applied to the entity.",
+                              "key": "classification",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Attribute-based query string.",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of results to return.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Number of results to skip for pagination.",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"requestId\": \"<string>\",\n  \"errorCode\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:31.000Z",
+                      "updatedAt": "2026-07-28T01:01:31.000Z",
+                      "uid": "35240-1037d96f-07c2-4b9e-bb64-b4104342ec72"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:01:31.000Z",
+                  "updatedAt": "2026-07-28T01:01:31.000Z",
+                  "uid": "35240-9def5f23-3692-4e9c-95d5-c9eceab8d3cd"
+                }
+              ],
+              "id": "322713a1-c218-422c-b30a-e38cd971549a",
+              "createdAt": "2026-07-28T01:01:31.000Z",
+              "updatedAt": "2026-07-28T01:01:31.000Z",
+              "uid": "35240-322713a1-c218-422c-b30a-e38cd971549a"
+            },
+            {
+              "name": "fulltext",
+              "item": [
+                {
+                  "name": "Apache Atlas Full-Text Search",
+                  "id": "ed65b4b4-ce31-49e0-915e-26e674a3ab05",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "basic",
+                      "basic": [
+                        {
+                          "key": "username",
+                          "value": "{{basicAuthUsername}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "password",
+                          "value": "{{basicAuthPassword}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/search/fulltext?query=<string>&typeName=<string>&limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "search",
+                        "fulltext"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Full-text search query string.",
+                          "key": "query",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by entity type.",
+                          "key": "typeName",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Maximum number of results.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset for pagination.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
+                    },
+                    "description": "Search for entities using full-text search across all indexed attributes."
+                  },
+                  "response": [
+                    {
+                      "id": "b62921dc-5184-4701-a0e6-6ddeb512229d",
+                      "name": "Full-text search results.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/search/fulltext?query=<string>&typeName=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "search",
+                            "fulltext"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Full-text search query string.",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by entity type.",
+                              "key": "typeName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of results.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset for pagination.",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"queryType\": \"<string>\",\n  \"searchParameters\": {},\n  \"approximateCount\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:01:31.000Z",
+                      "updatedAt": "2026-07-28T01:01:31.000Z",
+                      "uid": "35240-b62921dc-5184-4701-a0e6-6ddeb512229d"
+                    },
+                    {
+                      "id": "6d58ed97-80e5-4a91-b5d0-843d352eb475",
+                      "name": "Invalid search parameters.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v2/search/fulltext?query=<string>&typeName=<string>&limit=<integer>&offset=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v2",
+                            "search",
+                            "fulltext"
+                          ],
+                          "query": [
+                            {
+                              "description": "(Required) Full-text search query string.",
+                              "key": "query",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Filter by entity type.",
+                              "key": "typeName",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Maximum number of results.",
+                              "key": "limit",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Offset for pagination.",
+                              "key": "offset",
+                              "value": "<integer>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"requestId\": \"<string>\",\n  \"errorCode\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:01:31.000Z",
+                      "updatedAt": "2026-07-28T01:01:31.000Z",
+                      "uid": "35240-6d58ed97-80e5-4a91-b5d0-843d352eb475"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:01:31.000Z",
+                  "updatedAt": "2026-07-28T01:01:31.000Z",
+                  "uid": "35240-ed65b4b4-ce31-49e0-915e-26e674a3ab05"
+                }
+              ],
+              "id": "cff4cd8c-e603-470a-bf17-d670c435814f",
+              "createdAt": "2026-07-28T01:01:31.000Z",
+              "updatedAt": "2026-07-28T01:01:31.000Z",
+              "uid": "35240-cff4cd8c-e603-470a-bf17-d670c435814f"
+            }
+          ],
+          "id": "bac099f3-167a-4b56-b1ca-2d164af951e7",
+          "createdAt": "2026-07-28T01:01:31.000Z",
+          "updatedAt": "2026-07-28T01:01:31.000Z",
+          "uid": "35240-bac099f3-167a-4b56-b1ca-2d164af951e7"
+        }
+      ],
+      "id": "0f5f24cf-67ec-407f-9f7c-51cbcd9ca96d",
+      "createdAt": "2026-07-28T01:01:31.000Z",
+      "updatedAt": "2026-07-28T01:01:31.000Z",
+      "uid": "35240-0f5f24cf-67ec-407f-9f7c-51cbcd9ca96d"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:21000/api/atlas"
+    }
+  ]
+}

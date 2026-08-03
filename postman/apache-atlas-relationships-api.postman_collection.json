@@ -1,0 +1,213 @@
+{
+  "info": {
+    "_postman_id": "adac9b3b-41e0-41d8-ab45-5934486e248d",
+    "name": "Apache Atlas REST Discovery Relationships API",
+    "description": "The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.\n\nContact Support:\n Name: Apache Atlas Community",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:01:36.000Z",
+    "updatedAt": "2026-07-28T01:01:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-adac9b3b-41e0-41d8-ab45-5934486e248d"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "relationship",
+          "item": [
+            {
+              "name": "Apache Atlas Create Relationship",
+              "id": "961e5e17-5936-4f14-9ab3-6276b4a09cf6",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"typeName\": \"<string>\",\n  \"status\": \"DELETED\",\n  \"end1\": {\n    \"guid\": \"<string>\",\n    \"typeName\": \"<string>\"\n  },\n  \"end2\": {\n    \"guid\": \"<string>\",\n    \"typeName\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v2/relationship",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "relationship"
+                  ]
+                },
+                "description": "Create a new relationship between two entities."
+              },
+              "response": [
+                {
+                  "id": "cd54aff9-6a3e-412e-b8cf-7dc7eb0c418f",
+                  "name": "Relationship created successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"guid\": \"<string>\",\n  \"typeName\": \"<string>\",\n  \"status\": \"DELETED\",\n  \"end1\": {\n    \"guid\": \"<string>\",\n    \"typeName\": \"<string>\"\n  },\n  \"end2\": {\n    \"guid\": \"<string>\",\n    \"typeName\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/relationship",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "relationship"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"guid\": \"<string>\",\n  \"typeName\": \"<string>\",\n  \"status\": \"DELETED\",\n  \"end1\": {\n    \"guid\": \"<string>\",\n    \"typeName\": \"<string>\"\n  },\n  \"end2\": {\n    \"guid\": \"<string>\",\n    \"typeName\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:01:37.000Z",
+                  "updatedAt": "2026-07-28T01:01:37.000Z",
+                  "uid": "35240-cd54aff9-6a3e-412e-b8cf-7dc7eb0c418f"
+                },
+                {
+                  "id": "8b0b9811-43c7-45f6-bed0-0b164fd61706",
+                  "name": "Invalid relationship data.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"guid\": \"<string>\",\n  \"typeName\": \"<string>\",\n  \"status\": \"DELETED\",\n  \"end1\": {\n    \"guid\": \"<string>\",\n    \"typeName\": \"<string>\"\n  },\n  \"end2\": {\n    \"guid\": \"<string>\",\n    \"typeName\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/relationship",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "relationship"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"requestId\": \"<string>\",\n  \"errorCode\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:37.000Z",
+                  "updatedAt": "2026-07-28T01:01:37.000Z",
+                  "uid": "35240-8b0b9811-43c7-45f6-bed0-0b164fd61706"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:37.000Z",
+              "updatedAt": "2026-07-28T01:01:37.000Z",
+              "uid": "35240-961e5e17-5936-4f14-9ab3-6276b4a09cf6"
+            }
+          ],
+          "id": "36f92543-3890-4a12-a835-e9e08adcbbf8",
+          "createdAt": "2026-07-28T01:01:37.000Z",
+          "updatedAt": "2026-07-28T01:01:37.000Z",
+          "uid": "35240-36f92543-3890-4a12-a835-e9e08adcbbf8"
+        }
+      ],
+      "id": "e4a20e7b-0cba-4c66-8e01-03d50fc21b3c",
+      "createdAt": "2026-07-28T01:01:37.000Z",
+      "updatedAt": "2026-07-28T01:01:37.000Z",
+      "uid": "35240-e4a20e7b-0cba-4c66-8e01-03d50fc21b3c"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:21000/api/atlas"
+    }
+  ]
+}

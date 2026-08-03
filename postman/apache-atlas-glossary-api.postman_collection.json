@@ -1,0 +1,373 @@
+{
+  "info": {
+    "_postman_id": "75d51a2c-971b-4f32-b6e2-2cc388d4435e",
+    "name": "Apache Atlas REST Discovery Glossary API",
+    "description": "The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.\n\nContact Support:\n Name: Apache Atlas Community",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:01:34.000Z",
+    "updatedAt": "2026-07-28T01:01:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-75d51a2c-971b-4f32-b6e2-2cc388d4435e"
+  },
+  "item": [
+    {
+      "name": "v2",
+      "item": [
+        {
+          "name": "glossary",
+          "item": [
+            {
+              "name": "Apache Atlas List Glossaries",
+              "id": "e334f1b2-54e5-4bc6-9fd2-6ff96204d633",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v2/glossary?limit=<integer>&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "glossary"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of glossaries to return.",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Number of glossaries to skip.",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Retrieve all business glossaries with optional pagination."
+              },
+              "response": [
+                {
+                  "id": "a7f8ea93-c6f0-463f-b63e-07aa622248d9",
+                  "name": "Glossaries retrieved successfully.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/glossary?limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "glossary"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of glossaries to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of glossaries to skip.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"guid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"shortDescription\": \"<string>\",\n    \"longDescription\": \"<string>\",\n    \"language\": \"<string>\",\n    \"termCount\": \"<integer>\"\n  },\n  {\n    \"guid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"shortDescription\": \"<string>\",\n    \"longDescription\": \"<string>\",\n    \"language\": \"<string>\",\n    \"termCount\": \"<integer>\"\n  }\n]",
+                  "createdAt": "2026-07-28T01:01:35.000Z",
+                  "updatedAt": "2026-07-28T01:01:35.000Z",
+                  "uid": "35240-a7f8ea93-c6f0-463f-b63e-07aa622248d9"
+                },
+                {
+                  "id": "17c68661-3f15-42de-84c5-8667ead5367e",
+                  "name": "Authentication required.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/glossary?limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "glossary"
+                      ],
+                      "query": [
+                        {
+                          "description": "Maximum number of glossaries to return.",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Number of glossaries to skip.",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:01:35.000Z",
+                  "updatedAt": "2026-07-28T01:01:35.000Z",
+                  "uid": "35240-17c68661-3f15-42de-84c5-8667ead5367e"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:35.000Z",
+              "updatedAt": "2026-07-28T01:01:35.000Z",
+              "uid": "35240-e334f1b2-54e5-4bc6-9fd2-6ff96204d633"
+            },
+            {
+              "name": "Apache Atlas Create Glossary",
+              "id": "253d1ff6-93a3-4544-bb2d-2474a7fa152d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "basic",
+                  "basic": [
+                    {
+                      "key": "username",
+                      "value": "{{basicAuthUsername}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "password",
+                      "value": "{{basicAuthPassword}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"shortDescription\": \"<string>\",\n  \"longDescription\": \"<string>\",\n  \"language\": \"<string>\",\n  \"termCount\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v2/glossary",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v2",
+                    "glossary"
+                  ]
+                },
+                "description": "Create a new business glossary."
+              },
+              "response": [
+                {
+                  "id": "5ebd5553-5531-4fb5-b69f-f2c2c2a27538",
+                  "name": "Glossary created successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"guid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"shortDescription\": \"<string>\",\n  \"longDescription\": \"<string>\",\n  \"language\": \"<string>\",\n  \"termCount\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/glossary",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "glossary"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"guid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"shortDescription\": \"<string>\",\n  \"longDescription\": \"<string>\",\n  \"language\": \"<string>\",\n  \"termCount\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:01:35.000Z",
+                  "updatedAt": "2026-07-28T01:01:35.000Z",
+                  "uid": "35240-5ebd5553-5531-4fb5-b69f-f2c2c2a27538"
+                },
+                {
+                  "id": "98b93003-8b0e-4db1-b654-b8a661edf691",
+                  "name": "Invalid glossary data.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"guid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"shortDescription\": \"<string>\",\n  \"longDescription\": \"<string>\",\n  \"language\": \"<string>\",\n  \"termCount\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v2/glossary",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v2",
+                        "glossary"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"requestId\": \"<string>\",\n  \"errorCode\": \"<string>\",\n  \"errorMessage\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:01:35.000Z",
+                  "updatedAt": "2026-07-28T01:01:35.000Z",
+                  "uid": "35240-98b93003-8b0e-4db1-b654-b8a661edf691"
+                }
+              ],
+              "createdAt": "2026-07-28T01:01:35.000Z",
+              "updatedAt": "2026-07-28T01:01:35.000Z",
+              "uid": "35240-253d1ff6-93a3-4544-bb2d-2474a7fa152d"
+            }
+          ],
+          "id": "2ba473de-85a4-442b-b217-796566f6f8d9",
+          "createdAt": "2026-07-28T01:01:35.000Z",
+          "updatedAt": "2026-07-28T01:01:35.000Z",
+          "uid": "35240-2ba473de-85a4-442b-b217-796566f6f8d9"
+        }
+      ],
+      "id": "db8ff889-41cd-484f-b362-f8abf1cb3cda",
+      "createdAt": "2026-07-28T01:01:35.000Z",
+      "updatedAt": "2026-07-28T01:01:35.000Z",
+      "uid": "35240-db8ff889-41cd-484f-b362-f8abf1cb3cda"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:21000/api/atlas"
+    }
+  ]
+}
