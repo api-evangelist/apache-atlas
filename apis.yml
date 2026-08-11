@@ -50,18 +50,6 @@ apis:
     url: https://atlas.apache.org/api/v2/index.html
   - type: GettingStarted
     url: https://atlas.apache.org/quick_start_v2.html
-  - type: X-NaftikoCapability
-    url: capabilities/rest-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-entities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-glossary.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-lineage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-relationships.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-types.yaml
 - aid: apache-atlas:apache-atlas-entities-api
   name: Apache Atlas Entities API
   description: Manage metadata entities (CRUD operations on Atlas entities).
@@ -76,18 +64,6 @@ apis:
     url: https://atlas.apache.org/api/v2/index.html
   - type: GettingStarted
     url: https://atlas.apache.org/quick_start_v2.html
-  - type: X-NaftikoCapability
-    url: capabilities/rest-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-entities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-glossary.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-lineage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-relationships.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-types.yaml
 - aid: apache-atlas:apache-atlas-glossary-api
   name: Apache Atlas Glossary API
   description: Manage business glossary terms and categories.
@@ -102,18 +78,6 @@ apis:
     url: https://atlas.apache.org/api/v2/index.html
   - type: GettingStarted
     url: https://atlas.apache.org/quick_start_v2.html
-  - type: X-NaftikoCapability
-    url: capabilities/rest-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-entities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-glossary.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-lineage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-relationships.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-types.yaml
 - aid: apache-atlas:apache-atlas-lineage-api
   name: Apache Atlas Lineage API
   description: Track data lineage and provenance between entities.
@@ -128,18 +92,6 @@ apis:
     url: https://atlas.apache.org/api/v2/index.html
   - type: GettingStarted
     url: https://atlas.apache.org/quick_start_v2.html
-  - type: X-NaftikoCapability
-    url: capabilities/rest-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-entities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-glossary.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-lineage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-relationships.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-types.yaml
 - aid: apache-atlas:apache-atlas-relationships-api
   name: Apache Atlas Relationships API
   description: Manage relationships between entities.
@@ -154,18 +106,6 @@ apis:
     url: https://atlas.apache.org/api/v2/index.html
   - type: GettingStarted
     url: https://atlas.apache.org/quick_start_v2.html
-  - type: X-NaftikoCapability
-    url: capabilities/rest-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-entities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-glossary.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-lineage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-relationships.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-types.yaml
 - aid: apache-atlas:apache-atlas-types-api
   name: Apache Atlas Types API
   description: Manage type definitions including entity types, classifications, and relationships.
@@ -180,19 +120,12 @@ apis:
     url: https://atlas.apache.org/api/v2/index.html
   - type: GettingStarted
     url: https://atlas.apache.org/quick_start_v2.html
-  - type: X-NaftikoCapability
-    url: capabilities/rest-discovery.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-entities.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-glossary.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-lineage.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-relationships.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/rest-types.yaml
 common:
+- type: CodeOfConduct
+  url: https://github.com/apache/.github/blob/main/.github/CODE_OF_CONDUCT.md
+- type: License
+  name: Apache-2.0
+  url: https://github.com/apache/atlas/blob/master/LICENSE
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/apache-atlas/overview
 - type: AgenticAccess
