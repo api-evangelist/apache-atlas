@@ -1,0 +1,442 @@
+{
+  "item": [
+    {
+      "id": "969f3daf-9dec-4d53-bfd6-7a9b247831b8",
+      "name": "Discovery",
+      "description": {
+        "content": "Search and discover metadata entities using various search strategies.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d65513be-0b9f-4c02-96c8-cecd67a1f16f",
+          "name": "Apache Atlas Basic Search",
+          "request": {
+            "name": "Apache Atlas Basic Search",
+            "description": {
+              "content": "Search for entities using a basic query with filters on type, classification, and attribute values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "search",
+                "basic"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "typeName",
+                  "value": "<string>",
+                  "description": "Filter results by entity type name."
+                },
+                {
+                  "disabled": false,
+                  "key": "classification",
+                  "value": "<string>",
+                  "description": "Filter by classification/tag applied to the entity."
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "Attribute-based query string."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Number of results to skip for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "22e56057-5b39-4a0d-9ecc-855f4a991d29",
+              "name": "Search results returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "search",
+                    "basic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "typeName",
+                      "value": "DataSet"
+                    },
+                    {
+                      "key": "classification",
+                      "value": "PII"
+                    },
+                    {
+                      "key": "query",
+                      "value": "customer"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"queryType\": \"BASIC\",\n  \"searchParameters\": {\n    \"typeName\": \"DataSet\",\n    \"limit\": 25,\n    \"offset\": 0\n  },\n  \"entities\": [\n    {\n      \"typeName\": \"DataSet\",\n      \"guid\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"status\": \"ACTIVE\",\n      \"displayText\": \"customer_data\"\n    }\n  ],\n  \"approximateCount\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0297e279-853e-466c-a8af-3af7a6dcb18e",
+              "name": "Invalid search parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "search",
+                    "basic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "typeName",
+                      "value": "DataSet"
+                    },
+                    {
+                      "key": "classification",
+                      "value": "PII"
+                    },
+                    {
+                      "key": "query",
+                      "value": "customer"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"req-123456\",\n  \"errorCode\": \"ATLAS-400-00-004\",\n  \"errorMessage\": \"Entity not found for GUID\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a68e94de-9d64-4192-97f0-0ce4becfcad7",
+          "name": "Apache Atlas Full-Text Search",
+          "request": {
+            "name": "Apache Atlas Full-Text Search",
+            "description": {
+              "content": "Search for entities using full-text search across all indexed attributes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "search",
+                "fulltext"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) Full-text search query string."
+                },
+                {
+                  "disabled": false,
+                  "key": "typeName",
+                  "value": "<string>",
+                  "description": "Filter by entity type."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of results."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Offset for pagination."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "53d054a3-29a9-46bd-aa20-05193ace82e5",
+              "name": "Full-text search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "search",
+                    "fulltext"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "customer data warehouse"
+                    },
+                    {
+                      "key": "typeName",
+                      "value": "DataSet"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"queryType\": \"FULL_TEXT\",\n  \"entities\": [\n    {\n      \"typeName\": \"DataSet\",\n      \"guid\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"status\": \"ACTIVE\",\n      \"displayText\": \"customer_data\"\n    }\n  ],\n  \"approximateCount\": 5\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8862168d-160b-4775-8514-614dd1be6091",
+              "name": "Invalid search parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "search",
+                    "fulltext"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "customer data warehouse"
+                    },
+                    {
+                      "key": "typeName",
+                      "value": "DataSet"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"req-123456\",\n  \"errorCode\": \"ATLAS-400-00-004\",\n  \"errorMessage\": \"Entity not found for GUID\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:21000/api/atlas",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a944f0c7-7ef3-45c3-a4af-65edf8b93946",
+    "name": "Apache Atlas REST Discovery API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.\n\nContact Support:\n Name: Apache Atlas Community",
+      "type": "text/plain"
+    }
+  }
+}

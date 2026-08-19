@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Atlas REST Discovery Types API",
+    "version": "2.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Types",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Atlas Get All Type Definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:21000/api/atlas/v2/types/typedefs",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by type category (CLASSIFICATION, ENTITY, ENUM, RELATIONSHIP, STRUCT, BUSINESS_METADATA)."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve all type definitions including entity types, classification types, and relationship types."
+        },
+        {
+          "info": {
+            "name": "Apache Atlas Create Type Definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:21000/api/atlas/v2/types/typedefs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Create new type definitions for entity types, classification types, relationships, and enumerations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

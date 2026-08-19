@@ -1,0 +1,226 @@
+{
+  "item": [
+    {
+      "id": "5fcc7d61-99c0-49c7-a2e0-742d3952da2d",
+      "name": "Lineage",
+      "description": {
+        "content": "Track data lineage and provenance between entities.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a457a456-19f3-4b79-bcd9-c19de6eb17c6",
+          "name": "Apache Atlas Get Lineage by GUID",
+          "request": {
+            "name": "Apache Atlas Get Lineage by GUID",
+            "description": {
+              "content": "Retrieve data lineage graph for an entity by its GUID, showing upstream and downstream dependencies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "lineage",
+                ":guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "direction",
+                  "value": "BOTH",
+                  "description": "Lineage direction (INPUT, OUTPUT, BOTH)."
+                },
+                {
+                  "disabled": false,
+                  "key": "depth",
+                  "value": "<integer>",
+                  "description": "Number of hops to traverse in the lineage graph."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "guid",
+                  "description": "(Required) Unique identifier (GUID) of the entity."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "86c2059a-0daa-4c6c-83ed-fe2137a14a5f",
+              "name": "Lineage graph returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "lineage",
+                    ":guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "BOTH"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "3"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "guid",
+                      "description": "(Required) Unique identifier (GUID) of the entity."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"baseEntityGuid\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n  \"lineageDirection\": \"BOTH\",\n  \"lineageDepth\": 3,\n  \"guidEntityMap\": {\n    \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\": {\n      \"typeName\": \"DataSet\",\n      \"displayText\": \"customer_data\"\n    }\n  },\n  \"relations\": [\n    {\n      \"fromEntityId\": \"source-guid\",\n      \"toEntityId\": \"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\n      \"relationshipId\": \"rel-guid\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44fbe2ff-b520-4194-adac-86fe5d401cae",
+              "name": "Entity not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "lineage",
+                    ":guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "direction",
+                      "value": "BOTH"
+                    },
+                    {
+                      "key": "depth",
+                      "value": "3"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "guid",
+                      "description": "(Required) Unique identifier (GUID) of the entity."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"req-123456\",\n  \"errorCode\": \"ATLAS-400-00-004\",\n  \"errorMessage\": \"Entity not found for GUID\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:21000/api/atlas",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0058aaa3-130f-43fa-a8ab-9916e0b02841",
+    "name": "Apache Atlas REST Discovery Lineage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.\n\nContact Support:\n Name: Apache Atlas Community",
+      "type": "text/plain"
+    }
+  }
+}

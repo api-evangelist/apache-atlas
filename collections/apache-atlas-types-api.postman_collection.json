@@ -1,0 +1,352 @@
+{
+  "item": [
+    {
+      "id": "7375b309-970e-4482-a0d4-23a8c6fd6e31",
+      "name": "Types",
+      "description": {
+        "content": "Manage type definitions including entity types, classifications, and relationships.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d602d01d-f9d3-4abf-977e-ecad5fe3224d",
+          "name": "Apache Atlas Get All Type Definitions",
+          "request": {
+            "name": "Apache Atlas Get All Type Definitions",
+            "description": {
+              "content": "Retrieve all type definitions including entity types, classification types, and relationship types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "types",
+                "typedefs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by type category (CLASSIFICATION, ENTITY, ENUM, RELATIONSHIP, STRUCT, BUSINESS_METADATA)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e8bb668f-4b52-4fc0-940d-68fb3d5cd5f5",
+              "name": "Type definitions retrieved successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "types",
+                    "typedefs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "ENTITY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entityDefs\": [\n    {\n      \"name\": \"DataSet\",\n      \"superTypes\": [\n        \"Asset\"\n      ],\n      \"serviceType\": \"hadoop\"\n    }\n  ],\n  \"classificationDefs\": [],\n  \"enumDefs\": []\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aa4bf82c-58eb-4f49-9900-84fff78f4735",
+              "name": "Authentication required.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "types",
+                    "typedefs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "ENTITY"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "145c6f10-0449-4f72-a788-d7de050ff670",
+          "name": "Apache Atlas Create Type Definitions",
+          "request": {
+            "name": "Apache Atlas Create Type Definitions",
+            "description": {
+              "content": "Create new type definitions for entity types, classification types, relationships, and enumerations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "types",
+                "typedefs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"entityDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"classificationDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"enumDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"relationshipDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"businessMetadataDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1f2699d9-69f0-4c3f-896c-c5774990fcb5",
+              "name": "Type definitions created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "types",
+                    "typedefs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entityDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"classificationDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"enumDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"relationshipDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"businessMetadataDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"entityDefs\": [\n    {\n      \"name\": \"MyCustomDataSet\",\n      \"superTypes\": [\n        \"DataSet\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bb68674-3465-422e-af1c-69a39ced62f8",
+              "name": "Invalid type definition.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "types",
+                    "typedefs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"entityDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"classificationDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"enumDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"relationshipDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"businessMetadataDefs\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"req-123456\",\n  \"errorCode\": \"ATLAS-400-00-004\",\n  \"errorMessage\": \"Entity not found for GUID\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:21000/api/atlas",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cccaff75-79d9-4c88-b6ef-9ce22265d521",
+    "name": "Apache Atlas REST Discovery Types API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.\n\nContact Support:\n Name: Apache Atlas Community",
+      "type": "text/plain"
+    }
+  }
+}

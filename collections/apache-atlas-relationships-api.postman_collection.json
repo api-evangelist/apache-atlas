@@ -1,0 +1,197 @@
+{
+  "item": [
+    {
+      "id": "dccda57c-9105-44a6-bcd6-a775b7215282",
+      "name": "Relationships",
+      "description": {
+        "content": "Manage relationships between entities.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f687493-687b-4d60-bf59-69641d693424",
+          "name": "Apache Atlas Create Relationship",
+          "request": {
+            "name": "Apache Atlas Create Relationship",
+            "description": {
+              "content": "Create a new relationship between two entities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "relationship"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"guid\": \"<string>\",\n  \"typeName\": \"<string>\",\n  \"status\": \"<string>\",\n  \"end1\": {\n    \"guid\": \"<string>\",\n    \"typeName\": \"<string>\"\n  },\n  \"end2\": {\n    \"guid\": \"<string>\",\n    \"typeName\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ce6eed24-27d0-4cd3-8c1f-7524a828aa97",
+              "name": "Relationship created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "relationship"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"rel-guid-001\",\n  \"typeName\": \"DataSetLineage\",\n  \"status\": \"ACTIVE\",\n  \"end1\": {\n    \"guid\": \"source-entity-guid\",\n    \"typeName\": \"DataSet\"\n  },\n  \"end2\": {\n    \"guid\": \"target-entity-guid\",\n    \"typeName\": \"DataSet\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"rel-guid-001\",\n  \"typeName\": \"DataSetLineage\",\n  \"status\": \"ACTIVE\",\n  \"end1\": {\n    \"guid\": \"source-entity-guid\",\n    \"typeName\": \"DataSet\"\n  },\n  \"end2\": {\n    \"guid\": \"target-entity-guid\",\n    \"typeName\": \"DataSet\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e7000547-b4bc-44ec-ac25-71eaeff414d1",
+              "name": "Invalid relationship data.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "relationship"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"guid\": \"rel-guid-001\",\n  \"typeName\": \"DataSetLineage\",\n  \"status\": \"ACTIVE\",\n  \"end1\": {\n    \"guid\": \"source-entity-guid\",\n    \"typeName\": \"DataSet\"\n  },\n  \"end2\": {\n    \"guid\": \"target-entity-guid\",\n    \"typeName\": \"DataSet\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requestId\": \"req-123456\",\n  \"errorCode\": \"ATLAS-400-00-004\",\n  \"errorMessage\": \"Entity not found for GUID\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:21000/api/atlas",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "02b91322-e9e1-46e2-9d90-61b6022f5111",
+    "name": "Apache Atlas REST Discovery Relationships API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.\n\nContact Support:\n Name: Apache Atlas Community",
+      "type": "text/plain"
+    }
+  }
+}

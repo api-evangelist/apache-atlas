@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Atlas REST Discovery Lineage API",
+    "version": "2.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lineage",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Atlas Get Lineage by GUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:21000/api/atlas/v2/lineage/:guid",
+            "params": [
+              {
+                "name": "guid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (GUID) of the entity."
+              },
+              {
+                "name": "direction",
+                "value": "",
+                "type": "query",
+                "description": "Lineage direction (INPUT, OUTPUT, BOTH)."
+              },
+              {
+                "name": "depth",
+                "value": "",
+                "type": "query",
+                "description": "Number of hops to traverse in the lineage graph."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve data lineage graph for an entity by its GUID, showing upstream and downstream dependencies."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

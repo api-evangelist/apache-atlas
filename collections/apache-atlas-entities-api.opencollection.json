@@ -1,0 +1,126 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Atlas REST Discovery Entities API",
+    "version": "2.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Entities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Atlas Get Entity by GUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:21000/api/atlas/v2/entity/guid/:guid",
+            "params": [
+              {
+                "name": "guid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (GUID) of the entity."
+              },
+              {
+                "name": "minExtInfo",
+                "value": "",
+                "type": "query",
+                "description": "If true, minimize related entity information in the response."
+              },
+              {
+                "name": "ignoreRelationships",
+                "value": "",
+                "type": "query",
+                "description": "If true, ignore relationship attributes in the response."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve a single entity by its GUID, including all attributes and classifications."
+        },
+        {
+          "info": {
+            "name": "Apache Atlas Update Entity by GUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:21000/api/atlas/v2/entity/guid/:guid",
+            "params": [
+              {
+                "name": "guid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (GUID) of the entity to update."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Update an existing entity's attributes by GUID."
+        },
+        {
+          "info": {
+            "name": "Apache Atlas Delete Entity by GUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:21000/api/atlas/v2/entity/guid/:guid",
+            "params": [
+              {
+                "name": "guid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier (GUID) of the entity to delete."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Delete an entity by its GUID (soft-delete, changes status to DELETED)."
+        },
+        {
+          "info": {
+            "name": "Apache Atlas Create or Update Entities in Bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:21000/api/atlas/v2/entity/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Create or update one or more entities in bulk."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

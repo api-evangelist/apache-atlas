@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Atlas REST Discovery API",
+    "version": "2.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Atlas Basic Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:21000/api/atlas/v2/search/basic",
+            "params": [
+              {
+                "name": "typeName",
+                "value": "",
+                "type": "query",
+                "description": "Filter results by entity type name."
+              },
+              {
+                "name": "classification",
+                "value": "",
+                "type": "query",
+                "description": "Filter by classification/tag applied to the entity."
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Attribute-based query string."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip for pagination."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Search for entities using a basic query with filters on type, classification, and attribute values."
+        },
+        {
+          "info": {
+            "name": "Apache Atlas Full-Text Search",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:21000/api/atlas/v2/search/fulltext",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "Full-text search query string."
+              },
+              {
+                "name": "typeName",
+                "value": "",
+                "type": "query",
+                "description": "Filter by entity type."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of results."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset for pagination."
+              }
+            ],
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Search for entities using full-text search across all indexed attributes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
