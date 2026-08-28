@@ -6,6 +6,20 @@ description: Apache Atlas is a scalable and extensible set of core foundational 
   business glossary, and a REST API for programmatic governance operations. It supports discovery, auditing, and policy management
   for enterprise data assets.
 type: Index
+deliveryModel:
+  model: open-core
+  license: Apache-2.0
+  open_source: true
+  commercial: true
+  callable_host: false
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
