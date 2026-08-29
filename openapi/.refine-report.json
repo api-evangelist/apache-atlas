@@ -19,6 +19,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "apache-atlas-discovery-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apache-atlas-entities-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apache-atlas-glossary-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apache-atlas-lineage-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apache-atlas-relationships-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apache-atlas-types-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

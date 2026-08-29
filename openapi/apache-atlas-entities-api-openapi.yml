@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Apache Atlas REST Discovery Entities API
   description: The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.
@@ -220,6 +220,36 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    AtlasErrorResponse:
+      title: AtlasErrorResponse
+      description: Error response from the Apache Atlas REST API.
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: Unique request identifier for tracing.
+          example: req-123456
+        errorCode:
+          type: string
+          description: Atlas error code.
+          example: ATLAS-400-00-004
+        errorMessage:
+          type: string
+          description: Human-readable error message.
+          example: Entity not found for GUID
+    EntityMutationResponse:
+      title: EntityMutationResponse
+      description: Response from entity create, update, or delete operations.
+      type: object
+      properties:
+        guidAssignments:
+          type: object
+          description: Map of client-side temporary GUIDs to server-assigned GUIDs.
+          example:
+            '-1': a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        mutatedEntities:
+          type: object
+          description: Map of mutation type (CREATE, UPDATE, DELETE) to list of mutated entity headers.
     AtlasEntity:
       title: AtlasEntity
       description: Represents a single metadata entity in Apache Atlas.
@@ -269,6 +299,16 @@ components:
         referredEntities:
           type: object
           description: Map of referenced entities.
+    EntityWithExtInfo:
+      title: EntityWithExtInfo
+      description: An entity with its extended information (referred entities, classifications).
+      type: object
+      properties:
+        entity:
+          $ref: '#/components/schemas/AtlasEntity'
+        referredEntities:
+          type: object
+          description: Map of GUID to related entity for entities referenced by this entity.
     AtlasEntitiesWithExtInfo:
       title: AtlasEntitiesWithExtInfo
       description: Multiple entities with extended information for bulk operations.
@@ -282,46 +322,6 @@ components:
         referredEntities:
           type: object
           description: Map of referenced entities.
-    EntityWithExtInfo:
-      title: EntityWithExtInfo
-      description: An entity with its extended information (referred entities, classifications).
-      type: object
-      properties:
-        entity:
-          $ref: '#/components/schemas/AtlasEntity'
-        referredEntities:
-          type: object
-          description: Map of GUID to related entity for entities referenced by this entity.
-    AtlasErrorResponse:
-      title: AtlasErrorResponse
-      description: Error response from the Apache Atlas REST API.
-      type: object
-      properties:
-        requestId:
-          type: string
-          description: Unique request identifier for tracing.
-          example: req-123456
-        errorCode:
-          type: string
-          description: Atlas error code.
-          example: ATLAS-400-00-004
-        errorMessage:
-          type: string
-          description: Human-readable error message.
-          example: Entity not found for GUID
-    EntityMutationResponse:
-      title: EntityMutationResponse
-      description: Response from entity create, update, or delete operations.
-      type: object
-      properties:
-        guidAssignments:
-          type: object
-          description: Map of client-side temporary GUIDs to server-assigned GUIDs.
-          example:
-            '-1': a1b2c3d4-e5f6-7890-abcd-ef1234567890
-        mutatedEntities:
-          type: object
-          description: Map of mutation type (CREATE, UPDATE, DELETE) to list of mutated entity headers.
   securitySchemes:
     basicAuth:
       type: http

@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Apache Atlas REST Discovery Lineage API
   description: The Apache Atlas REST API provides endpoints for managing metadata entities, type definitions, data lineage, search and discovery, business glossary, and relationships. It enables programmatic metadata management and data governance operations for enterprise data ecosystems.
@@ -88,6 +88,23 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    AtlasErrorResponse:
+      title: AtlasErrorResponse
+      description: Error response from the Apache Atlas REST API.
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: Unique request identifier for tracing.
+          example: req-123456
+        errorCode:
+          type: string
+          description: Atlas error code.
+          example: ATLAS-400-00-004
+        errorMessage:
+          type: string
+          description: Human-readable error message.
+          example: Entity not found for GUID
     AtlasLineageInfo:
       title: AtlasLineageInfo
       description: Lineage graph information for an entity showing upstream and downstream data flow.
@@ -117,23 +134,6 @@ components:
           items:
             type: object
           description: List of lineage relationships between entities.
-    AtlasErrorResponse:
-      title: AtlasErrorResponse
-      description: Error response from the Apache Atlas REST API.
-      type: object
-      properties:
-        requestId:
-          type: string
-          description: Unique request identifier for tracing.
-          example: req-123456
-        errorCode:
-          type: string
-          description: Atlas error code.
-          example: ATLAS-400-00-004
-        errorMessage:
-          type: string
-          description: Human-readable error message.
-          example: Entity not found for GUID
   securitySchemes:
     basicAuth:
       type: http
