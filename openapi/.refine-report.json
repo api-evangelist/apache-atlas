@@ -1,12 +1,7 @@
 {
   "provider": "apache-atlas",
   "sources": [
-    "apache-atlas-discovery-api-openapi.yml",
-    "apache-atlas-entities-api-openapi.yml",
-    "apache-atlas-glossary-api-openapi.yml",
-    "apache-atlas-lineage-api-openapi.yml",
-    "apache-atlas-relationships-api-openapi.yml",
-    "apache-atlas-types-api-openapi.yml"
+    "_ae-authored/apache-atlas-rest-openapi.yaml"
   ],
   "outputs": [
     "apache-atlas-discovery-api-openapi.yml",
@@ -20,13 +15,16 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "apache-atlas-discovery-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apache-atlas-entities-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apache-atlas-glossary-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apache-atlas-lineage-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apache-atlas-relationships-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apache-atlas-types-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "apache-atlas-rest-openapi.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "apache-atlas-discovery-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-atlas-entities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-atlas-glossary-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-atlas-lineage-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-atlas-relationships-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-atlas-types-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
