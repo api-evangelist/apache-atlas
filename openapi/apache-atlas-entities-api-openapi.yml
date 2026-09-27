@@ -220,29 +220,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    AtlasEntityWithExtInfo:
-      title: AtlasEntityWithExtInfo
-      description: Entity with extended information for create/update operations.
-      type: object
-      properties:
-        entity:
-          $ref: '#/components/schemas/AtlasEntity'
-        referredEntities:
-          type: object
-          description: Map of referenced entities.
-    EntityMutationResponse:
-      title: EntityMutationResponse
-      description: Response from entity create, update, or delete operations.
-      type: object
-      properties:
-        guidAssignments:
-          type: object
-          description: Map of client-side temporary GUIDs to server-assigned GUIDs.
-          example:
-            '-1': a1b2c3d4-e5f6-7890-abcd-ef1234567890
-        mutatedEntities:
-          type: object
-          description: Map of mutation type (CREATE, UPDATE, DELETE) to list of mutated entity headers.
     AtlasEntity:
       title: AtlasEntity
       description: Represents a single metadata entity in Apache Atlas.
@@ -295,6 +272,39 @@ components:
         referredEntities:
           type: object
           description: Map of referenced entities.
+    AtlasEntityWithExtInfo:
+      title: AtlasEntityWithExtInfo
+      description: Entity with extended information for create/update operations.
+      type: object
+      properties:
+        entity:
+          $ref: '#/components/schemas/AtlasEntity'
+        referredEntities:
+          type: object
+          description: Map of referenced entities.
+    EntityMutationResponse:
+      title: EntityMutationResponse
+      description: Response from entity create, update, or delete operations.
+      type: object
+      properties:
+        guidAssignments:
+          type: object
+          description: Map of client-side temporary GUIDs to server-assigned GUIDs.
+          example:
+            '-1': a1b2c3d4-e5f6-7890-abcd-ef1234567890
+        mutatedEntities:
+          type: object
+          description: Map of mutation type (CREATE, UPDATE, DELETE) to list of mutated entity headers.
+    EntityWithExtInfo:
+      title: EntityWithExtInfo
+      description: An entity with its extended information (referred entities, classifications).
+      type: object
+      properties:
+        entity:
+          $ref: '#/components/schemas/AtlasEntity'
+        referredEntities:
+          type: object
+          description: Map of GUID to related entity for entities referenced by this entity.
     AtlasErrorResponse:
       title: AtlasErrorResponse
       description: Error response from the Apache Atlas REST API.
@@ -312,16 +322,6 @@ components:
           type: string
           description: Human-readable error message.
           example: Entity not found for GUID
-    EntityWithExtInfo:
-      title: EntityWithExtInfo
-      description: An entity with its extended information (referred entities, classifications).
-      type: object
-      properties:
-        entity:
-          $ref: '#/components/schemas/AtlasEntity'
-        referredEntities:
-          type: object
-          description: Map of GUID to related entity for entities referenced by this entity.
   securitySchemes:
     basicAuth:
       type: http
