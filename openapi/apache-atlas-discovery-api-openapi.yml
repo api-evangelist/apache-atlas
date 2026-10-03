@@ -163,6 +163,23 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    AtlasErrorResponse:
+      title: AtlasErrorResponse
+      description: Error response from the Apache Atlas REST API.
+      type: object
+      properties:
+        requestId:
+          type: string
+          description: Unique request identifier for tracing.
+          example: req-123456
+        errorCode:
+          type: string
+          description: Atlas error code.
+          example: ATLAS-400-00-004
+        errorMessage:
+          type: string
+          description: Human-readable error message.
+          example: Entity not found for GUID
     AtlasSearchResult:
       title: AtlasSearchResult
       description: Result of a search query against the Atlas metadata repository.
@@ -184,23 +201,6 @@ components:
           type: integer
           description: Approximate total count of matching entities.
           example: 42
-    AtlasErrorResponse:
-      title: AtlasErrorResponse
-      description: Error response from the Apache Atlas REST API.
-      type: object
-      properties:
-        requestId:
-          type: string
-          description: Unique request identifier for tracing.
-          example: req-123456
-        errorCode:
-          type: string
-          description: Atlas error code.
-          example: ATLAS-400-00-004
-        errorMessage:
-          type: string
-          description: Human-readable error message.
-          example: Entity not found for GUID
   securitySchemes:
     basicAuth:
       type: http
